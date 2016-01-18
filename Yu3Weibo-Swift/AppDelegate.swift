@@ -17,7 +17,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         application.statusBarHidden = false
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        self.window?.rootViewController = YUTabBarViewController()
+        let key = "CFBundleVersion"
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let lastVersion = defaults.valueForKey(key)
+        //获得当前版本号
+        let currentVersion = NSBundle.mainBundle().infoDictionary![key]
+        if ((currentVersion?.isEqual(lastVersion)) == true) {
+            application.statusBarHidden = false
+            self.window!.rootViewController = YUTabBarViewController()
+        } else {
+            self.window!.rootViewController = YUNewFeatureController()
+            defaults.setObject(currentVersion, forKey: key)
+            defaults.synchronize()
+        }
         self.window?.makeKeyAndVisible()
         return true
     }

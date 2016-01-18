@@ -58,7 +58,7 @@ class YUTabBarViewController: UITabBarController, YUTabBarDelegate {
         let selectImage = UIImage.imageWithName(selectedImage).imageWithRenderingMode(.AlwaysOriginal)
         //print("\(selectedImage)\(selectImage)")
         childVc.tabBarItem.selectedImage = selectImage
-        self.addChildViewController(UINavigationController(rootViewController: childVc))
+        self.addChildViewController(YUNavigationController(rootViewController: childVc))
         self.myTabBar.addTabBarButtonWithItem(childVc.tabBarItem)
     }
 }

@@ -13,39 +13,63 @@ class YUHomeViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem.itemWith("navigationbar_friendsearch", highIcon: "navigationbar_friendsearch_highlighted", target: self, action: Selector("findFriend"))
+        
+        // 右边按钮
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.itemWith("navigationbar_pop", highIcon: "navigationbar_pop_highlighted", target: self, action: Selector("pop"))
+        let titleButton = YUTitleButton()
+        titleButton.setImage(UIImage.imageWithName("navigationbar_arrow_down"), forState: .Normal)
+        titleButton.setTitle("huihui", forState: .Normal)
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        titleButton.frame = CGRectMake(0, 0, 100, 40);
+        //    titleButton.tag = TitleButtonDownTag;
+        titleButton.addTarget(self, action: Selector("titleClick:"), forControlEvents: .TouchUpInside)
+        self.navigationItem.titleView = titleButton
+    }
+    
+    func titleClick(titleButton:YUTitleButton) {
+        if titleButton.currentImage == UIImage.imageWithName("navigationbar_arrow_up") {
+            titleButton.setImage(UIImage.imageWithName("navigationbar_arrow_down"), forState: .Normal)
+        } else {
+            titleButton.setImage(UIImage.imageWithName("navigationbar_arrow_up"), forState: .Normal)
+        }
+    }
+    
+    func findFriend() {
+        print("findFriend")
+    }
+    
+    func pop() {
+        print("pop")
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let vc = UIViewController()
+        vc.view.backgroundColor = UIColor.redColor()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
-
+    
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return 20
     }
 
-    /*
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
-
+        let yu3 = "cell"
+        let cell = UITableViewCell(style: .Subtitle, reuseIdentifier: yu3)
+        // 2.设置cell的数据
+        cell.textLabel!.text = "yu3"
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
@@ -91,5 +115,16 @@ class YUHomeViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+   
+}
 
+extension UIBarButtonItem {
+    class func itemWith(icon:String, highIcon:String, target:AnyObject?, action:Selector) -> UIBarButtonItem {
+        let button = UIButton(type: .Custom)
+        button.setBackgroundImage(UIImage.imageWithName(icon), forState: .Normal)
+        button.setBackgroundImage(UIImage.imageWithName(highIcon), forState: .Highlighted)
+        button.frame = CGRectMake(0, 0, (button.currentBackgroundImage?.size.width)!, (button.currentBackgroundImage?.size.height)!)
+        button.addTarget(target, action: action, forControlEvents: .TouchUpInside)
+        return UIBarButtonItem(customView: button)
+    }
 }

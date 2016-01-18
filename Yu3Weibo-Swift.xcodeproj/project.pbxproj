@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EE1FA7DD1C4D1660009B7C30 /* YUNewFeatureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1FA7DC1C4D1660009B7C30 /* YUNewFeatureController.swift */; };
 		EE29EEA41C4B643200CA667F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE29EEA31C4B643200CA667F /* AppDelegate.swift */; };
 		EE29EEAB1C4B643200CA667F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE29EEAA1C4B643200CA667F /* Assets.xcassets */; };
 		EE29EEAE1C4B643200CA667F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE29EEAC1C4B643200CA667F /* LaunchScreen.storyboard */; };
@@ -20,6 +21,8 @@
 		EE29EEE51C4B81E200CA667F /* YUMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE29EEE41C4B81E200CA667F /* YUMessageViewController.swift */; };
 		EE29EEE91C4B822C00CA667F /* YUDiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE29EEE81C4B822C00CA667F /* YUDiscoverViewController.swift */; };
 		EE29EEED1C4B825A00CA667F /* YUMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE29EEEC1C4B825A00CA667F /* YUMeViewController.swift */; };
+		EE35A1E71C4CF07500B721BA /* YUNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE35A1E61C4CF07500B721BA /* YUNavigationController.swift */; };
+		EE35A1EA1C4D076300B721BA /* YUTitleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE35A1E91C4D076300B721BA /* YUTitleButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EE1FA7DC1C4D1660009B7C30 /* YUNewFeatureController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YUNewFeatureController.swift; sourceTree = "<group>"; };
 		EE29EEA01C4B643200CA667F /* Yu3Weibo-Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Yu3Weibo-Swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE29EEA31C4B643200CA667F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EE29EEAA1C4B643200CA667F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -59,6 +63,8 @@
 		EE29EEE41C4B81E200CA667F /* YUMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YUMessageViewController.swift; sourceTree = "<group>"; };
 		EE29EEE81C4B822C00CA667F /* YUDiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YUDiscoverViewController.swift; sourceTree = "<group>"; };
 		EE29EEEC1C4B825A00CA667F /* YUMeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YUMeViewController.swift; sourceTree = "<group>"; };
+		EE35A1E61C4CF07500B721BA /* YUNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YUNavigationController.swift; sourceTree = "<group>"; };
+		EE35A1E91C4D076300B721BA /* YUTitleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YUTitleButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +92,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EE1FA7DA1C4D15D8009B7C30 /* NewFeature */ = {
+			isa = PBXGroup;
+			children = (
+				EE1FA7DC1C4D1660009B7C30 /* YUNewFeatureController.swift */,
+			);
+			name = NewFeature;
+			sourceTree = "<group>";
+		};
 		EE29EE971C4B643200CA667F = {
 			isa = PBXGroup;
 			children = (
@@ -138,6 +152,7 @@
 		EE29EED11C4B64BA00CA667F /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				EE1FA7DA1C4D15D8009B7C30 /* NewFeature */,
 				EE29EEEA1C4B824200CA667F /* Me */,
 				EE29EEE61C4B821000CA667F /* Discover */,
 				EE29EEE21C4B81CB00CA667F /* Message */,
@@ -169,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				EE29EED51C4B658E00CA667F /* YUTabBarViewController.swift */,
+				EE35A1E61C4CF07500B721BA /* YUNavigationController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -186,6 +202,7 @@
 		EE29EEDE1C4B818E00CA667F /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				EE35A1E81C4D074D00B721BA /* View */,
 				EE29EEDF1C4B819700CA667F /* Controller */,
 			);
 			name = Home;
@@ -245,6 +262,14 @@
 				EE29EEEC1C4B825A00CA667F /* YUMeViewController.swift */,
 			);
 			name = Controller;
+			sourceTree = "<group>";
+		};
+		EE35A1E81C4D074D00B721BA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EE35A1E91C4D076300B721BA /* YUTitleButton.swift */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -385,7 +410,10 @@
 				EE29EEE91C4B822C00CA667F /* YUDiscoverViewController.swift in Sources */,
 				EE29EEED1C4B825A00CA667F /* YUMeViewController.swift in Sources */,
 				EE29EED81C4B676D00CA667F /* YUTabBar.swift in Sources */,
+				EE35A1EA1C4D076300B721BA /* YUTitleButton.swift in Sources */,
 				EE29EEE11C4B81AF00CA667F /* YUHomeViewController.swift in Sources */,
+				EE35A1E71C4CF07500B721BA /* YUNavigationController.swift in Sources */,
+				EE1FA7DD1C4D1660009B7C30 /* YUNewFeatureController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -604,6 +632,7 @@
 				EE29EECA1C4B643200CA667F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EE29EECB1C4B643200CA667F /* Build configuration list for PBXNativeTarget "Yu3Weibo-SwiftTests" */ = {
 			isa = XCConfigurationList;
@@ -612,6 +641,7 @@
 				EE29EECD1C4B643200CA667F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EE29EECE1C4B643200CA667F /* Build configuration list for PBXNativeTarget "Yu3Weibo-SwiftUITests" */ = {
 			isa = XCConfigurationList;
@@ -620,6 +650,7 @@
 				EE29EED01C4B643200CA667F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
