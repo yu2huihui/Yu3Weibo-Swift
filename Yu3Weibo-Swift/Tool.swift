@@ -31,20 +31,19 @@ class YUWeiboTool {
 
 class YUAccountTool {
     static let accountFile = (NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).last! as NSString).stringByAppendingPathComponent("account.data")
-    static var expiresTime:NSDate?
     
     static func saveAccount(account:YUAccount) -> Void {
         // 计算账号过期时间
         let now = NSDate()
-        expiresTime = now.dateByAddingTimeInterval(NSTimeInterval(account.expires_in!))
+        account.expiresTime = now.dateByAddingTimeInterval(NSTimeInterval(account.expires_in!))
         NSKeyedArchiver.archiveRootObject(account, toFile: accountFile)
     }
     
     static func account() -> YUAccount? {
         let account = NSKeyedUnarchiver.unarchiveObjectWithFile(accountFile) as? YUAccount
         let now = NSDate()
-        if expiresTime != nil {
-            if (now.compare(expiresTime!)) == NSComparisonResult.OrderedAscending { // 还没有过期
+        if account!.expiresTime != nil {
+            if (now.compare(account!.expiresTime!)) == NSComparisonResult.OrderedAscending { // 还没有过期
                 return account
             } else {
                 return nil

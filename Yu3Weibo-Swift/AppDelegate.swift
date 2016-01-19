@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        self.window?.makeKeyAndVisible()
         // 先判断有无存储账号信息
         let account = YUAccountTool.account()
         if (account != nil) { // 之前登录成功
@@ -23,7 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else { // 之前没有登录成功
             self.window?.rootViewController = YUOAuthViewController()
         }
-        self.window?.makeKeyAndVisible()
         return true
     }
 

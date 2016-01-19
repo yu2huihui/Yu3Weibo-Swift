@@ -10,7 +10,7 @@ import Foundation
 
 class YUAccount: NSObject, NSCoding {
     var access_token:NSString?
-    //var expiresTime:NSDate? // 账号的过期时间
+    var expiresTime:NSDate? // 账号的过期时间
     // 服务器返回的数字可能会很大, 用String比较好
     var expires_in:NSNumber?
     var remind_in:NSString?
@@ -27,7 +27,7 @@ class YUAccount: NSObject, NSCoding {
         self.expires_in = aDecoder.decodeObjectForKey("expires_in") as? NSNumber
         self.remind_in = aDecoder.decodeObjectForKey("remind_in") as? NSString
         self.uid = aDecoder.decodeObjectForKey("uid") as? NSString
-        //self.expiresTime = aDecoder.decodeObjectForKey("expiresTime") as? NSDate
+        self.expiresTime = aDecoder.decodeObjectForKey("expiresTime") as? NSDate
     }
     
     func encodeWithCoder(aCoder: NSCoder) {
@@ -35,6 +35,6 @@ class YUAccount: NSObject, NSCoding {
         aCoder.encodeObject(self.expires_in, forKey: "expires_in")
         aCoder.encodeObject(self.remind_in, forKey: "remind_in")
         aCoder.encodeObject(self.uid, forKey: "uid")
-        //aCoder.encodeObject(self.expiresTime, forKey: "expiresTime")
+        aCoder.encodeObject(self.expiresTime, forKey: "expiresTime")
     }
 }
