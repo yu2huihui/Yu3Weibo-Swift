@@ -38,8 +38,4 @@ class YUTitleButton: UIButton {
         let titleH = contentRect.size.height
         return CGRectMake(titleX, titleY, titleW, titleH)
     }
-    
-    
-
-
 }

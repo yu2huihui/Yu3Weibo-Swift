@@ -39,10 +39,11 @@ class YUOAuthViewController: UIViewController, UIWebViewDelegate {
             "grant_type" : "authorization_code",
             "redirect_uri" : "http://www.cnblogs.com/yu3-/"
         ]
-        Alamofire.request(.POST, "https://api.weibo.com/oauth2/access_token", parameters: params, encoding: .URL, headers: nil).responseJSON { (response) -> Void in
+        let urlStr = "https://api.weibo.com/oauth2/access_token"
+        Alamofire.request(.POST, urlStr, parameters: params, encoding: .URL, headers: nil).responseJSON { (response) -> Void in
             let result = response.result
             if result.error != nil {
-                print(result.error)
+                print("请求失败：\(result.error)")
             } else {
                 // 字典转模型
                 let dict = result.value as! Dictionary<String, AnyObject>

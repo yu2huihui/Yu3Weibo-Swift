@@ -45,19 +45,3 @@ class YUBadgeButton: UIButton {
     }
     
 }
-
-extension UIImage {
-    class func imageWithName(name: String) -> UIImage {
-        let newName = name + "_os7"
-        var image:UIImage? = UIImage(named: newName)
-        if image == nil {
-            image = UIImage(named: name)
-        }
-        return image!
-    }
-    
-    class func resizedImageWithName(name: String) -> UIImage {
-        let image = UIImage.imageWithName(name)
-        return image.stretchableImageWithLeftCapWidth(Int(image.size.width/2), topCapHeight: Int(image.size.height/2))
-    }
-}

@@ -27,6 +27,9 @@
 		EE6056891C4E6CF60089A04C /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EEF0B35F1C4E6C93000BD306 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EE6056DE1C4E77020089A04C /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6056DD1C4E77020089A04C /* Model.swift */; };
 		EE6056E01C4E7D500089A04C /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6056DF1C4E7D500089A04C /* Tool.swift */; };
+		EEE780801C4F7BA900C4D905 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEE780791C4F7B9400C4D905 /* Kingfisher.framework */; };
+		EEE780811C4F7BA900C4D905 /* Kingfisher.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EEE780791C4F7B9400C4D905 /* Kingfisher.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		EEE780851C4F7DF400C4D905 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE780841C4F7DF400C4D905 /* Extensions.swift */; };
 		EEF0B3521C4E64AA000BD306 /* YUOAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF0B3511C4E64AA000BD306 /* YUOAuthViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +54,48 @@
 			proxyType = 1;
 			remoteGlobalIDString = F8111E3219A95C8B0040E7D1;
 			remoteInfo = "Alamofire iOS";
+		};
+		EEE780761C4F7B9400C4D905 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EEE7806E1C4F7B9300C4D905 /* Kingfisher.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D1ED2D0B1AD2CFA600CFC3EB;
+			remoteInfo = "Kingfisher-Demo";
+		};
+		EEE780781C4F7B9400C4D905 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EEE7806E1C4F7B9300C4D905 /* Kingfisher.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D1ED2D351AD2D09F00CFC3EB;
+			remoteInfo = Kingfisher;
+		};
+		EEE7807A1C4F7B9400C4D905 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EEE7806E1C4F7B9300C4D905 /* Kingfisher.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D1ED2D3F1AD2D09F00CFC3EB;
+			remoteInfo = KingfisherTests;
+		};
+		EEE7807C1C4F7B9400C4D905 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EEE7806E1C4F7B9300C4D905 /* Kingfisher.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D13F49C21BEDA53F00CE335D;
+			remoteInfo = "Kingfisher-tvOS-Demo";
+		};
+		EEE7807E1C4F7B9400C4D905 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EEE7806E1C4F7B9300C4D905 /* Kingfisher.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D13F49D61BEDA67C00CE335D;
+			remoteInfo = "Kingfisher-tvOS";
+		};
+		EEE780821C4F7BA900C4D905 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EEE7806E1C4F7B9300C4D905 /* Kingfisher.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D1ED2D341AD2D09F00CFC3EB;
+			remoteInfo = Kingfisher;
 		};
 		EEF0B35E1C4E6C93000BD306 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -110,6 +155,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				EEE780811C4F7BA900C4D905 /* Kingfisher.framework in Embed Frameworks */,
 				EE6056891C4E6CF60089A04C /* Alamofire.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -142,6 +188,8 @@
 		EE35A1E91C4D076300B721BA /* YUTitleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YUTitleButton.swift; sourceTree = "<group>"; };
 		EE6056DD1C4E77020089A04C /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		EE6056DF1C4E7D500089A04C /* Tool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tool.swift; sourceTree = "<group>"; };
+		EEE7806E1C4F7B9300C4D905 /* Kingfisher.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Kingfisher.xcodeproj; path = "Kingfisher-master/Kingfisher.xcodeproj"; sourceTree = "<group>"; };
+		EEE780841C4F7DF400C4D905 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		EEF0B3511C4E64AA000BD306 /* YUOAuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YUOAuthViewController.swift; sourceTree = "<group>"; };
 		EEF0B3541C4E6C93000BD306 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = "Alamofire-master/Alamofire.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -151,6 +199,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EEE780801C4F7BA900C4D905 /* Kingfisher.framework in Frameworks */,
 				EE6056881C4E6CF60089A04C /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -172,14 +221,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		EE1FA7DA1C4D15D8009B7C30 /* NewFeature */ = {
-			isa = PBXGroup;
-			children = (
-				EE1FA7DC1C4D1660009B7C30 /* YUNewFeatureController.swift */,
-			);
-			name = NewFeature;
-			sourceTree = "<group>";
-		};
 		EE29EE971C4B643200CA667F = {
 			isa = PBXGroup;
 			children = (
@@ -187,6 +228,7 @@
 				EE29EEB71C4B643200CA667F /* Yu3Weibo-SwiftTests */,
 				EE29EEC21C4B643200CA667F /* Yu3Weibo-SwiftUITests */,
 				EE29EEA11C4B643200CA667F /* Products */,
+				EEE7806E1C4F7B9300C4D905 /* Kingfisher.xcodeproj */,
 				EEF0B3541C4E6C93000BD306 /* Alamofire.xcodeproj */,
 			);
 			sourceTree = "<group>";
@@ -233,44 +275,22 @@
 		EE29EED11C4B64BA00CA667F /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				EEF0B3501C4E6479000BD306 /* OAuth */,
-				EE1FA7DA1C4D15D8009B7C30 /* NewFeature */,
-				EE29EEEA1C4B824200CA667F /* Me */,
-				EE29EEE61C4B821000CA667F /* Discover */,
-				EE29EEE21C4B81CB00CA667F /* Message */,
-				EE29EEDE1C4B818E00CA667F /* Home */,
+				EEE780331C4F5D4500C4D905 /* Controller */,
+				EE29EED91C4B69B600CA667F /* View */,
+				EE29EEDE1C4B818E00CA667F /* Model */,
 				EE29EED31C4B64E300CA667F /* Other */,
-				EE29EED21C4B64D300CA667F /* Main */,
 			);
 			name = Classes;
-			sourceTree = "<group>";
-		};
-		EE29EED21C4B64D300CA667F /* Main */ = {
-			isa = PBXGroup;
-			children = (
-				EE29EED91C4B69B600CA667F /* View */,
-				EE29EED41C4B650500CA667F /* Controller */,
-			);
-			name = Main;
 			sourceTree = "<group>";
 		};
 		EE29EED31C4B64E300CA667F /* Other */ = {
 			isa = PBXGroup;
 			children = (
 				EE6056DF1C4E7D500089A04C /* Tool.swift */,
-				EE6056DD1C4E77020089A04C /* Model.swift */,
 				EE29EEA31C4B643200CA667F /* AppDelegate.swift */,
+				EEE780841C4F7DF400C4D905 /* Extensions.swift */,
 			);
 			name = Other;
-			sourceTree = "<group>";
-		};
-		EE29EED41C4B650500CA667F /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				EE29EED51C4B658E00CA667F /* YUTabBarViewController.swift */,
-				EE35A1E61C4CF07500B721BA /* YUNavigationController.swift */,
-			);
-			name = Controller;
 			sourceTree = "<group>";
 		};
 		EE29EED91C4B69B600CA667F /* View */ = {
@@ -279,49 +299,44 @@
 				EE29EED71C4B676D00CA667F /* YUTabBar.swift */,
 				EE29EEDA1C4B69D700CA667F /* YUTabBarButton.swift */,
 				EE29EEDC1C4B70A200CA667F /* YUBadgeButton.swift */,
+				EE35A1E91C4D076300B721BA /* YUTitleButton.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
 		};
-		EE29EEDE1C4B818E00CA667F /* Home */ = {
+		EE29EEDE1C4B818E00CA667F /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				EE35A1E91C4D076300B721BA /* YUTitleButton.swift */,
-				EE29EEE01C4B81AF00CA667F /* YUHomeViewController.swift */,
+				EE6056DD1C4E77020089A04C /* Model.swift */,
 			);
-			name = Home;
+			name = Model;
 			sourceTree = "<group>";
 		};
-		EE29EEE21C4B81CB00CA667F /* Message */ = {
-			isa = PBXGroup;
-			children = (
-				EE29EEE41C4B81E200CA667F /* YUMessageViewController.swift */,
-			);
-			name = Message;
-			sourceTree = "<group>";
-		};
-		EE29EEE61C4B821000CA667F /* Discover */ = {
-			isa = PBXGroup;
-			children = (
-				EE29EEE81C4B822C00CA667F /* YUDiscoverViewController.swift */,
-			);
-			name = Discover;
-			sourceTree = "<group>";
-		};
-		EE29EEEA1C4B824200CA667F /* Me */ = {
-			isa = PBXGroup;
-			children = (
-				EE29EEEC1C4B825A00CA667F /* YUMeViewController.swift */,
-			);
-			name = Me;
-			sourceTree = "<group>";
-		};
-		EEF0B3501C4E6479000BD306 /* OAuth */ = {
+		EEE780331C4F5D4500C4D905 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				EEF0B3511C4E64AA000BD306 /* YUOAuthViewController.swift */,
+				EE1FA7DC1C4D1660009B7C30 /* YUNewFeatureController.swift */,
+				EE29EEEC1C4B825A00CA667F /* YUMeViewController.swift */,
+				EE29EEE81C4B822C00CA667F /* YUDiscoverViewController.swift */,
+				EE29EEE41C4B81E200CA667F /* YUMessageViewController.swift */,
+				EE29EEE01C4B81AF00CA667F /* YUHomeViewController.swift */,
+				EE29EED51C4B658E00CA667F /* YUTabBarViewController.swift */,
+				EE35A1E61C4CF07500B721BA /* YUNavigationController.swift */,
 			);
-			name = OAuth;
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		EEE7806F1C4F7B9300C4D905 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EEE780771C4F7B9400C4D905 /* Kingfisher-Demo.app */,
+				EEE780791C4F7B9400C4D905 /* Kingfisher.framework */,
+				EEE7807B1C4F7B9400C4D905 /* KingfisherTests.xctest */,
+				EEE7807D1C4F7B9400C4D905 /* Kingfisher-tvOS-Demo.app */,
+				EEE7807F1C4F7B9400C4D905 /* Kingfisher.framework */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		EEF0B3551C4E6C93000BD306 /* Products */ = {
@@ -354,6 +369,7 @@
 			);
 			dependencies = (
 				EE60568B1C4E6CF60089A04C /* PBXTargetDependency */,
+				EEE780831C4F7BA900C4D905 /* PBXTargetDependency */,
 			);
 			name = "Yu3Weibo-Swift";
 			productName = "Yu3Weibo-Swift";
@@ -435,6 +451,10 @@
 					ProductGroup = EEF0B3551C4E6C93000BD306 /* Products */;
 					ProjectRef = EEF0B3541C4E6C93000BD306 /* Alamofire.xcodeproj */;
 				},
+				{
+					ProductGroup = EEE7806F1C4F7B9300C4D905 /* Products */;
+					ProjectRef = EEE7806E1C4F7B9300C4D905 /* Kingfisher.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -446,6 +466,41 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		EEE780771C4F7B9400C4D905 /* Kingfisher-Demo.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "Kingfisher-Demo.app";
+			remoteRef = EEE780761C4F7B9400C4D905 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EEE780791C4F7B9400C4D905 /* Kingfisher.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Kingfisher.framework;
+			remoteRef = EEE780781C4F7B9400C4D905 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EEE7807B1C4F7B9400C4D905 /* KingfisherTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = KingfisherTests.xctest;
+			remoteRef = EEE7807A1C4F7B9400C4D905 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EEE7807D1C4F7B9400C4D905 /* Kingfisher-tvOS-Demo.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "Kingfisher-tvOS-Demo.app";
+			remoteRef = EEE7807C1C4F7B9400C4D905 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EEE7807F1C4F7B9400C4D905 /* Kingfisher.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Kingfisher.framework;
+			remoteRef = EEE7807E1C4F7B9400C4D905 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		EEF0B35F1C4E6C93000BD306 /* Alamofire.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -539,6 +594,7 @@
 				EE29EEED1C4B825A00CA667F /* YUMeViewController.swift in Sources */,
 				EE29EED81C4B676D00CA667F /* YUTabBar.swift in Sources */,
 				EE35A1EA1C4D076300B721BA /* YUTitleButton.swift in Sources */,
+				EEE780851C4F7DF400C4D905 /* Extensions.swift in Sources */,
 				EEF0B3521C4E64AA000BD306 /* YUOAuthViewController.swift in Sources */,
 				EE29EEE11C4B81AF00CA667F /* YUHomeViewController.swift in Sources */,
 				EE35A1E71C4CF07500B721BA /* YUNavigationController.swift in Sources */,
@@ -579,6 +635,11 @@
 			isa = PBXTargetDependency;
 			name = "Alamofire iOS";
 			targetProxy = EE60568A1C4E6CF60089A04C /* PBXContainerItemProxy */;
+		};
+		EEE780831C4F7BA900C4D905 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Kingfisher;
+			targetProxy = EEE780821C4F7BA900C4D905 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

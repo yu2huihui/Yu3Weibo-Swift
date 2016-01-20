@@ -7,20 +7,48 @@
 //
 
 import UIKit
+import Alamofire
+import Kingfisher
 
 class YUHomeViewController: UITableViewController {
-
+    var statuses:[YUStatus]?
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.setNavigationBar()
+        self.setStatuses()
+    }
+    
+    func setStatuses() {
+        let access_token = YUAccountTool.account()?.access_token
+        let params = ["access_token": access_token!] as Dictionary<String,AnyObject>
+        let urlStr = "https://api.weibo.com/2/statuses/home_timeline.json"
+        Alamofire.request(.GET, urlStr, parameters: params, encoding: .URL, headers: nil).responseJSON { (response) -> Void in
+            if response.result.error != nil {
+                print("请求失败：\(response.result.error)")
+            } else {
+                let status = response.result.value as? NSDictionary
+                let statusAry = status!["statuses"] as? NSArray
+                var statuses = [YUStatus]()
+                for statusDic in statusAry! {
+                    //将字典封装成模型
+                    let status = YUStatus(dic: statusDic as! NSDictionary)
+                    statuses.append(status)
+                }
+                self.statuses = statuses
+                self.tableView.reloadData()
+            }
+            
+        }
+    }
+    
+    func setNavigationBar() {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem.itemWith("navigationbar_friendsearch", highIcon: "navigationbar_friendsearch_highlighted", target: self, action: Selector("findFriend"))
         
-        // 右边按钮
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.itemWith("navigationbar_pop", highIcon: "navigationbar_pop_highlighted", target: self, action: Selector("pop"))
         let titleButton = YUTitleButton()
         titleButton.setImage(UIImage.imageWithName("navigationbar_arrow_down"), forState: .Normal)
         titleButton.setTitle("huihui", forState: .Normal)
-
+        
         titleButton.frame = CGRectMake(0, 0, 100, 40);
         //    titleButton.tag = TitleButtonDownTag;
         titleButton.addTarget(self, action: Selector("titleClick:"), forControlEvents: .TouchUpInside)
@@ -58,15 +86,21 @@ class YUHomeViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 20
+        return (self.statuses) != nil ? self.statuses!.count : 0
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let yu3 = "cell"
         let cell = UITableViewCell(style: .Subtitle, reuseIdentifier: yu3)
-        // 2.设置cell的数据
-        cell.textLabel!.text = "yu3"
+        // 设置cell的数据
+        let status = self.statuses?[indexPath.row]
+        cell.detailTextLabel?.text = status?.text
+        // 微博作者的昵称
+        let user = status?.user
+        cell.textLabel?.text = user?.name
+        // 微博作者的头像
+        cell.imageView?.kf_setImageWithURL(NSURL(string: (user?.profile_image_url)!)!, placeholderImage: UIImage.imageWithName("tabbar_compose_button"))
         return cell
     }
     
@@ -116,15 +150,4 @@ class YUHomeViewController: UITableViewController {
     }
     */
    
-}
-
-extension UIBarButtonItem {
-    class func itemWith(icon:String, highIcon:String, target:AnyObject?, action:Selector) -> UIBarButtonItem {
-        let button = UIButton(type: .Custom)
-        button.setBackgroundImage(UIImage.imageWithName(icon), forState: .Normal)
-        button.setBackgroundImage(UIImage.imageWithName(highIcon), forState: .Highlighted)
-        button.frame = CGRectMake(0, 0, (button.currentBackgroundImage?.size.width)!, (button.currentBackgroundImage?.size.height)!)
-        button.addTarget(target, action: action, forControlEvents: .TouchUpInside)
-        return UIBarButtonItem(customView: button)
-    }
 }
