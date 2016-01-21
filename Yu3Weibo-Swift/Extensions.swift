@@ -9,6 +9,53 @@
 import Foundation
 import UIKit
 
+extension NSDate {
+    /**
+    *  是否为今天
+    */
+    func isToday() -> Bool {
+        let calendar = NSCalendar.currentCalendar()
+
+        // 当前的年月日
+        let currentYear = calendar.component(.Year, fromDate: NSDate())
+        let currentMonth = calendar.component(.Month, fromDate: NSDate())
+        let currentDay = calendar.component(.Day, fromDate: NSDate())
+        
+        // 获得self的年月日
+        let year = calendar.component(.Year, fromDate: self)
+        let month = calendar.component(.Month, fromDate: self)
+        let day = calendar.component(.Day, fromDate: self)
+        
+        return (year == currentYear) && (month == currentMonth) && (day == currentDay)
+    }
+    
+    /**
+    *  是否为昨天
+    */
+    func isYesterday() -> Bool {
+        //....wait
+        return false
+    }
+    
+    /**
+    *  是否为今年
+    */
+    func isThisYear() -> Bool {
+        let calendar = NSCalendar.currentCalendar()
+        // 当前的年
+        let currentYear = calendar.component(.Year, fromDate: NSDate())
+        // 获得self的年
+        let year = calendar.component(.Year, fromDate: self)
+        return year == currentYear
+    }
+}
+
+extension UIColor {
+    class func colorWithRed(red:Int, green:Int, blue:Int) -> UIColor {
+        return UIColor(red: CGFloat(red)/255.0, green: CGFloat(green)/255.0, blue: CGFloat(blue)/255.0, alpha: 1.0)
+    }
+}
+
 extension UIBarButtonItem {
     class func itemWith(icon:String, highIcon:String, target:AnyObject?, action:Selector) -> UIBarButtonItem {
         let button = UIButton(type: .Custom)
@@ -31,7 +78,22 @@ extension UIImage {
     }
     
     class func resizedImageWithName(name: String) -> UIImage {
+        return UIImage.resizedImageWithName(name, left: 0.5, top: 0.5)
+    }
+    
+    class func resizedImageWithName(name:String, left:CGFloat, top:CGFloat) -> UIImage {
         let image = UIImage.imageWithName(name)
-        return image.stretchableImageWithLeftCapWidth(Int(image.size.width/2), topCapHeight: Int(image.size.height/2))
+        return image.stretchableImageWithLeftCapWidth(Int(image.size.width * left), topCapHeight: Int(image.size.height * top))
+    }
+    
+    class func cutToCircle(oldImage:UIImage) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(oldImage.size, false, 0.0)
+        let ctx = UIGraphicsGetCurrentContext()
+        CGContextAddEllipseInRect(ctx, CGRectMake(0, 0, oldImage.size.width, oldImage.size.height))
+        CGContextClip(ctx)
+        oldImage.drawInRect(CGRectMake(0, 0, oldImage.size.width, oldImage.size.height))
+        let result = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        return result;
     }
 }

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EE19E5BC1C507C0D00A40B2E /* FrameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE19E5BB1C507C0D00A40B2E /* FrameModel.swift */; };
+		EE19E5C01C50B2B000A40B2E /* YUStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE19E5BF1C50B2B000A40B2E /* YUStatusCell.swift */; };
 		EE1FA7DD1C4D1660009B7C30 /* YUNewFeatureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1FA7DC1C4D1660009B7C30 /* YUNewFeatureController.swift */; };
 		EE29EEA41C4B643200CA667F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE29EEA31C4B643200CA667F /* AppDelegate.swift */; };
 		EE29EEAB1C4B643200CA667F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE29EEAA1C4B643200CA667F /* Assets.xcassets */; };
@@ -25,7 +27,7 @@
 		EE35A1EA1C4D076300B721BA /* YUTitleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE35A1E91C4D076300B721BA /* YUTitleButton.swift */; };
 		EE6056881C4E6CF60089A04C /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEF0B35F1C4E6C93000BD306 /* Alamofire.framework */; };
 		EE6056891C4E6CF60089A04C /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EEF0B35F1C4E6C93000BD306 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		EE6056DE1C4E77020089A04C /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6056DD1C4E77020089A04C /* Model.swift */; };
+		EE6056DE1C4E77020089A04C /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6056DD1C4E77020089A04C /* DataModel.swift */; };
 		EE6056E01C4E7D500089A04C /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6056DF1C4E7D500089A04C /* Tool.swift */; };
 		EEE780801C4F7BA900C4D905 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEE780791C4F7B9400C4D905 /* Kingfisher.framework */; };
 		EEE780811C4F7BA900C4D905 /* Kingfisher.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EEE780791C4F7B9400C4D905 /* Kingfisher.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -164,6 +166,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		EE19E5BB1C507C0D00A40B2E /* FrameModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrameModel.swift; sourceTree = "<group>"; };
+		EE19E5BF1C50B2B000A40B2E /* YUStatusCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YUStatusCell.swift; sourceTree = "<group>"; };
 		EE1FA7DC1C4D1660009B7C30 /* YUNewFeatureController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YUNewFeatureController.swift; sourceTree = "<group>"; };
 		EE29EEA01C4B643200CA667F /* Yu3Weibo-Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Yu3Weibo-Swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE29EEA31C4B643200CA667F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -186,7 +190,7 @@
 		EE29EEEC1C4B825A00CA667F /* YUMeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YUMeViewController.swift; sourceTree = "<group>"; };
 		EE35A1E61C4CF07500B721BA /* YUNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YUNavigationController.swift; sourceTree = "<group>"; };
 		EE35A1E91C4D076300B721BA /* YUTitleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YUTitleButton.swift; sourceTree = "<group>"; };
-		EE6056DD1C4E77020089A04C /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		EE6056DD1C4E77020089A04C /* DataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		EE6056DF1C4E7D500089A04C /* Tool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tool.swift; sourceTree = "<group>"; };
 		EEE7806E1C4F7B9300C4D905 /* Kingfisher.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Kingfisher.xcodeproj; path = "Kingfisher-master/Kingfisher.xcodeproj"; sourceTree = "<group>"; };
 		EEE780841C4F7DF400C4D905 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -300,6 +304,7 @@
 				EE29EEDA1C4B69D700CA667F /* YUTabBarButton.swift */,
 				EE29EEDC1C4B70A200CA667F /* YUBadgeButton.swift */,
 				EE35A1E91C4D076300B721BA /* YUTitleButton.swift */,
+				EE19E5BF1C50B2B000A40B2E /* YUStatusCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -307,7 +312,8 @@
 		EE29EEDE1C4B818E00CA667F /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				EE6056DD1C4E77020089A04C /* Model.swift */,
+				EE6056DD1C4E77020089A04C /* DataModel.swift */,
+				EE19E5BB1C507C0D00A40B2E /* FrameModel.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -586,10 +592,12 @@
 				EE29EEDD1C4B70A200CA667F /* YUBadgeButton.swift in Sources */,
 				EE29EED61C4B658E00CA667F /* YUTabBarViewController.swift in Sources */,
 				EE29EEDB1C4B69D700CA667F /* YUTabBarButton.swift in Sources */,
+				EE19E5C01C50B2B000A40B2E /* YUStatusCell.swift in Sources */,
+				EE19E5BC1C507C0D00A40B2E /* FrameModel.swift in Sources */,
 				EE6056E01C4E7D500089A04C /* Tool.swift in Sources */,
 				EE29EEA41C4B643200CA667F /* AppDelegate.swift in Sources */,
 				EE29EEE51C4B81E200CA667F /* YUMessageViewController.swift in Sources */,
-				EE6056DE1C4E77020089A04C /* Model.swift in Sources */,
+				EE6056DE1C4E77020089A04C /* DataModel.swift in Sources */,
 				EE29EEE91C4B822C00CA667F /* YUDiscoverViewController.swift in Sources */,
 				EE29EEED1C4B825A00CA667F /* YUMeViewController.swift in Sources */,
 				EE29EED81C4B676D00CA667F /* YUTabBar.swift in Sources */,
