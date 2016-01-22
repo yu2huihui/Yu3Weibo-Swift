@@ -12,10 +12,59 @@ import Foundation
 class YUStatus: NSObject {
     /** 微博的内容(文字) */
     var text:String?
+    /** 微博的时间原始数据"EEE MMM dd HH:mm:ss Z yyyy" */
+    var _created_at:String?
     /** 微博的时间 */
-    var created_at:String?
+    var created_at:String? {
+        //时间显示
+        let fmt = NSDateFormatter()
+        fmt.dateFormat = "EEE MMM dd HH:mm:ss Z yyyy"
+        fmt.locale = NSLocale(localeIdentifier: "en_US")//设置识别英文格式的时间，若没有此句且设备语言不是英文，无法得到时间
+        let createdDate = fmt.dateFromString(self._created_at!)
+        // 2..判断微博发送时间 和 现在时间 的差距
+        let calendar = NSCalendar.currentCalendar()
+        //let componentHour = calendar.components(.Hour, fromDate: createdDate!, toDate: NSDate(), options: .WrapComponents)
+        if createdDate!.isToday() { // 今天
+            //print("\(componentHour.hour)hour")
+            let createdDateHour = calendar.component(.Hour, fromDate: createdDate!)
+            let currentHour = calendar.component(.Hour, fromDate: NSDate())
+            if currentHour - createdDateHour >= 1 {
+                return "\(currentHour - createdDateHour)小时前"
+            } else {
+                let createdDateMin = calendar.component(.Minute, fromDate: createdDate!)
+                let currentMin = calendar.component(.Minute, fromDate: NSDate())
+                if currentMin - createdDateMin < 1 {
+                    return"刚刚"
+                } else {
+                    return "\(currentMin - createdDateMin)分钟前"
+                }
+            }
+        } else if createdDate!.isYesterday() { // 昨天
+            fmt.dateFormat = "昨天 HH:mm"
+            return fmt.stringFromDate(createdDate!)
+        } else if createdDate!.isThisYear() { // 今年(至少是前天)
+            fmt.dateFormat = "MM-dd HH:mm"
+            return fmt.stringFromDate(createdDate!)
+        } else { // 非今年
+            fmt.dateFormat = "yyyy-MM-dd HH:mm"
+            return fmt.stringFromDate(createdDate!)
+        }
+    }
+    /** 微博的来源原始html数据 */
+    var _source:String?
     /** 微博的来源 */
-    var source:String?
+    var source:String? {
+        //来源显示
+        let start = _source?.rangeOfString(">")?.startIndex.advancedBy(1)
+        let end = _source?.rangeOfString("</")?.startIndex
+        if start != nil && end != nil {
+            let range = Range(start: start!, end: end!)
+            let str = _source?.substringWithRange(range)
+            return "来自\(str!)"
+        } else {
+            return _source
+        }
+    }
     /** 微博的ID */
     var idstr:String?
     /** 微博的单张配图 */
@@ -34,8 +83,8 @@ class YUStatus: NSObject {
     init(dic:NSDictionary) {
         super.init()
         self.text = dic["text"] as? String
-        self.created_at = dic["created_at"] as? String
-        self.source = dic["source"] as? String
+        self._created_at = dic["created_at"] as? String
+        self._source = dic["source"] as? String
         self.idstr = dic["idstr"] as? String
         self.thumbnail_pic = dic["thumbnail_pic"] as? String
         self.reposts_count = dic["reposts_count"] as? Int
@@ -45,47 +94,6 @@ class YUStatus: NSObject {
         let retweeted_status_dic = dic["retweeted_status"] as? NSDictionary
         if retweeted_status_dic != nil {
             self.retweeted_status = YUStatus(dic: retweeted_status_dic!)
-        }
-        
-        //来源显示
-        let start = source?.rangeOfString(">")!.startIndex.advancedBy(1)
-        let end = source?.rangeOfString("</")!.startIndex
-        let range = Range(start: start!, end: end!)
-        let str = source?.substringWithRange(range)
-        source = "来自\(str!)"
-        
-        //时间显示
-        let fmt = NSDateFormatter()
-        fmt.dateFormat = "EEE MMM dd HH:mm:ss Z yyyy"
-        fmt.locale = NSLocale(localeIdentifier: "en_US")//设置识别英文格式的时间，若没有此句且设备语言不是英文，无法得到时间
-        let createdDate = fmt.dateFromString(self.created_at!)
-        // 2..判断微博发送时间 和 现在时间 的差距
-        let calendar = NSCalendar.currentCalendar()
-        //let componentHour = calendar.components(.Hour, fromDate: createdDate!, toDate: NSDate(), options: .WrapComponents)
-        if createdDate!.isToday() { // 今天
-            //print("\(componentHour.hour)hour")
-            let createdDateHour = calendar.component(.Hour, fromDate: createdDate!)
-            let currentHour = calendar.component(.Hour, fromDate: NSDate())
-            if currentHour - createdDateHour >= 1 {
-                self.created_at! = "\(currentHour - createdDateHour)小时前"
-            } else {
-                let createdDateMin = calendar.component(.Minute, fromDate: createdDate!)
-                let currentMin = calendar.component(.Minute, fromDate: NSDate())
-                if currentMin - createdDateMin < 1 {
-                    self.created_at! = "刚刚"
-                } else {
-                    self.created_at! = "\(currentMin - createdDateMin)分钟前"
-                }
-            }
-        } else if createdDate!.isYesterday() { // 昨天
-            fmt.dateFormat = "昨天 HH:mm"
-            self.created_at! = fmt.stringFromDate(createdDate!)
-        } else if createdDate!.isThisYear() { // 今年(至少是前天)
-            fmt.dateFormat = "MM-dd HH:mm"
-            self.created_at! = fmt.stringFromDate(createdDate!)
-        } else { // 非今年
-            fmt.dateFormat = "yyyy-MM-dd HH:mm"
-            self.created_at! = fmt.stringFromDate(createdDate!)
         }
     }
 }

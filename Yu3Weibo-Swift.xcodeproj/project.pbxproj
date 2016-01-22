@@ -10,6 +10,8 @@
 		EE19E5BC1C507C0D00A40B2E /* FrameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE19E5BB1C507C0D00A40B2E /* FrameModel.swift */; };
 		EE19E5C01C50B2B000A40B2E /* YUStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE19E5BF1C50B2B000A40B2E /* YUStatusCell.swift */; };
 		EE1FA7DD1C4D1660009B7C30 /* YUNewFeatureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1FA7DC1C4D1660009B7C30 /* YUNewFeatureController.swift */; };
+		EE22002C1C5201780021FFE1 /* YUStatusToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE22002B1C5201780021FFE1 /* YUStatusToolbar.swift */; };
+		EE2200381C5257950021FFE1 /* YUStatusTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2200371C5257950021FFE1 /* YUStatusTopView.swift */; };
 		EE29EEA41C4B643200CA667F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE29EEA31C4B643200CA667F /* AppDelegate.swift */; };
 		EE29EEAB1C4B643200CA667F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE29EEAA1C4B643200CA667F /* Assets.xcassets */; };
 		EE29EEAE1C4B643200CA667F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE29EEAC1C4B643200CA667F /* LaunchScreen.storyboard */; };
@@ -169,6 +171,8 @@
 		EE19E5BB1C507C0D00A40B2E /* FrameModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrameModel.swift; sourceTree = "<group>"; };
 		EE19E5BF1C50B2B000A40B2E /* YUStatusCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YUStatusCell.swift; sourceTree = "<group>"; };
 		EE1FA7DC1C4D1660009B7C30 /* YUNewFeatureController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YUNewFeatureController.swift; sourceTree = "<group>"; };
+		EE22002B1C5201780021FFE1 /* YUStatusToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YUStatusToolbar.swift; sourceTree = "<group>"; };
+		EE2200371C5257950021FFE1 /* YUStatusTopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YUStatusTopView.swift; sourceTree = "<group>"; };
 		EE29EEA01C4B643200CA667F /* Yu3Weibo-Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Yu3Weibo-Swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE29EEA31C4B643200CA667F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EE29EEAA1C4B643200CA667F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -305,6 +309,8 @@
 				EE29EEDC1C4B70A200CA667F /* YUBadgeButton.swift */,
 				EE35A1E91C4D076300B721BA /* YUTitleButton.swift */,
 				EE19E5BF1C50B2B000A40B2E /* YUStatusCell.swift */,
+				EE2200371C5257950021FFE1 /* YUStatusTopView.swift */,
+				EE22002B1C5201780021FFE1 /* YUStatusToolbar.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -590,8 +596,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				EE29EEDD1C4B70A200CA667F /* YUBadgeButton.swift in Sources */,
+				EE22002C1C5201780021FFE1 /* YUStatusToolbar.swift in Sources */,
 				EE29EED61C4B658E00CA667F /* YUTabBarViewController.swift in Sources */,
 				EE29EEDB1C4B69D700CA667F /* YUTabBarButton.swift in Sources */,
+				EE2200381C5257950021FFE1 /* YUStatusTopView.swift in Sources */,
 				EE19E5C01C50B2B000A40B2E /* YUStatusCell.swift in Sources */,
 				EE19E5BC1C507C0D00A40B2E /* FrameModel.swift in Sources */,
 				EE6056E01C4E7D500089A04C /* Tool.swift in Sources */,

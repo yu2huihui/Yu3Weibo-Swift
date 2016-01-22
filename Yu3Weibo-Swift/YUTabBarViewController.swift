@@ -41,7 +41,7 @@ class YUTabBarViewController: UITabBarController, YUTabBarDelegate {
     func setupAllChildViewControllers() {
         let home = YUHomeViewController()
         self.setupChildViewController(home, title: "首页", imageName: "tabbar_home", selectedImage: "tabbar_home_selected")
-        home.tabBarItem.badgeValue = "99"
+        //home.tabBarItem.badgeValue = "99"
         let message = YUMessageViewController()
         self.setupChildViewController(message, title: "消息", imageName: "tabbar_message_center", selectedImage: "tabbar_message_center_selected")
         let discover = YUDiscoverViewController()
@@ -49,7 +49,7 @@ class YUTabBarViewController: UITabBarController, YUTabBarDelegate {
         let me = YUMeViewController()
         self.setupChildViewController(me, title: "我", imageName: "tabbar_profile", selectedImage: "tabbar_profile_selected")
         me.tabBarItem.badgeValue = "3"
-        message.tabBarItem.badgeValue = "23"
+        //message.tabBarItem.badgeValue = "23"
     }
    
     func setupChildViewController(childVc:UIViewController, title:String, imageName:String, selectedImage:String) {
