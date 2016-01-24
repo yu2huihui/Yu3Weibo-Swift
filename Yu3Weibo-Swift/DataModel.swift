@@ -8,6 +8,16 @@
 
 import Foundation
 
+class YUPhoto : NSObject {
+    /** 微博的单张配图 */
+    var thumbnail_pic:String?
+    
+    init(photo:String) {
+        super.init()
+        thumbnail_pic = photo
+    }
+}
+
 /** 微博模型 */
 class YUStatus: NSObject {
     /** 微博的内容(文字) */
@@ -68,7 +78,7 @@ class YUStatus: NSObject {
     /** 微博的ID */
     var idstr:String?
     /** 微博的单张配图 */
-    var thumbnail_pic:String?
+    var pic_urls:[YUPhoto]?
     /** 微博的转发数 */
     var reposts_count:Int?
     /** 微博的评论数 */
@@ -86,7 +96,7 @@ class YUStatus: NSObject {
         self._created_at = dic["created_at"] as? String
         self._source = dic["source"] as? String
         self.idstr = dic["idstr"] as? String
-        self.thumbnail_pic = dic["thumbnail_pic"] as? String
+        //self.pic_urls =  dic["thumbnail_pic"] as? String
         self.reposts_count = dic["reposts_count"] as? Int
         self.comments_count = dic["comments_count"] as? Int
         self.attitudes_count = dic["attitudes_count"] as? Int
@@ -95,6 +105,17 @@ class YUStatus: NSObject {
         if retweeted_status_dic != nil {
             self.retweeted_status = YUStatus(dic: retweeted_status_dic!)
         }
+        //初始化配图数组
+        let pic_urls_dics = dic["pic_urls"] as? NSArray
+        var urls = [YUPhoto]()
+        if pic_urls_dics != nil {
+            for dic in pic_urls_dics! {
+                let photo = YUPhoto(photo: (dic["thumbnail_pic"] as? String)!)
+                urls.append(photo)
+                //print("url==========\(photo.thumbnail_pic)")
+            }
+        }
+        self.pic_urls = urls
     }
 }
 /** 用户模型 */

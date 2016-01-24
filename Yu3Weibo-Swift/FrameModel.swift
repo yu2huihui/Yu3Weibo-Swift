@@ -108,11 +108,11 @@ class YUStatusFrame : NSObject {
             self.contentLabelF = CGRectMake(contentLabelX, contentLabelY, contentLabelSize.width, contentLabelSize.height)
             
             // 8.配图
-            if (newValue!.thumbnail_pic != nil) {
-                let photoViewWH:CGFloat = 70
+            if (newValue!.pic_urls != nil) {
+                let photosViewSize = YUPhotoListView.photosViewSizeWithPhotosCount(newValue!.pic_urls!.count)
                 let photoViewX = contentLabelX
                 let photoViewY = CGRectGetMaxY(self.contentLabelF) + YUStatusCellBorder
-                self.photoViewF = CGRectMake(photoViewX, photoViewY, photoViewWH, photoViewWH)
+                self.photoViewF = CGRectMake(photoViewX, photoViewY, photosViewSize.width, photosViewSize.height)
             }
             
             // 9.被转发微博
@@ -138,11 +138,11 @@ class YUStatusFrame : NSObject {
                 self.retweetContentLabelF = CGRectMake(retweetContentLabelX, retweetContentLabelY, retweetContentLabelSize.width, retweetContentLabelSize.height)
                 
                 // 12.被转发微博的配图
-                if(newValue!.retweeted_status?.thumbnail_pic != nil) {
-                    let retweetPhotoViewWH:CGFloat = 70
+                if(newValue!.retweeted_status?.pic_urls != nil) {
+                    let retweetPhotosViewSize = YUPhotoListView.photosViewSizeWithPhotosCount(newValue!.retweeted_status!.pic_urls!.count)
                     let retweetPhotoViewX = retweetContentLabelX
                     let retweetPhotoViewY = CGRectGetMaxY(self.retweetContentLabelF) + YUStatusCellBorder
-                    self.retweetPhotoViewF = CGRectMake(retweetPhotoViewX, retweetPhotoViewY, retweetPhotoViewWH, retweetPhotoViewWH)
+                    self.retweetPhotoViewF = CGRectMake(retweetPhotoViewX, retweetPhotoViewY, retweetPhotosViewSize.width, retweetPhotosViewSize.height)
                     retweetViewH = CGRectGetMaxY(self.retweetPhotoViewF)
                 } else { // 没有配图
                     retweetViewH = CGRectGetMaxY(self.retweetContentLabelF)
@@ -153,7 +153,7 @@ class YUStatusFrame : NSObject {
                 // 有转发微博时topViewH
                 topViewH = CGRectGetMaxY(self.retweetViewF)
             } else { // 没有转发微博
-                if (newValue!.thumbnail_pic != nil) { // 有图
+                if (newValue!.pic_urls != nil) { // 有图
                     topViewH = CGRectGetMaxY(self.photoViewF)
                 } else { // 无图
                     topViewH = CGRectGetMaxY(self.contentLabelF)

@@ -20,6 +20,7 @@ class YUHomeViewController: UITableViewController {
     
     func setStatuses() {
         self.tableView.separatorStyle = .None//去掉cell之间的分割线
+        self.tableView.backgroundColor = UIColor.colorWithRed(226, green: 226, blue: 226)
         let access_token = YUAccountTool.account()?.access_token
         let params = ["access_token": access_token!] as Dictionary<String,AnyObject>
         let urlStr = "https://api.weibo.com/2/statuses/home_timeline.json"

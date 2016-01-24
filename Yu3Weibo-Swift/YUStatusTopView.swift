@@ -14,7 +14,7 @@ class YUStatusTopView: UIImageView {
     /** 会员图标 */
     weak var vipView:UIImageView?
     /** 配图 */
-    weak var photoView:UIImageView?
+    weak var photoView = YUPhotoListView()
     /** 昵称 */
     weak var nameLabel:UILabel?
     /** 时间 */
@@ -70,10 +70,10 @@ class YUStatusTopView: UIImageView {
             self.contentLabel!.text = status!.text
             self.contentLabel!.frame = statusFrame!.contentLabelF
             // 8.配图
-            if (status!.thumbnail_pic != nil) {
+            if (status!.pic_urls != nil) {
                 self.photoView!.hidden = false
                 self.photoView!.frame = statusFrame!.photoViewF
-                self.photoView!.kf_setImageWithURL(NSURL(string: status!.thumbnail_pic!)!, placeholderImage: UIImage.imageWithName("timeline_image_placeholder"))
+                self.photoView!.photos = status!.pic_urls!
             } else {
                 self.photoView!.hidden = true
             }
@@ -97,6 +97,7 @@ class YUStatusTopView: UIImageView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         /** 1.背景的图片 */
+        self.userInteractionEnabled = true
         self.image = UIImage.resizedImageWithName("timeline_card_top_background")
         self.highlightedImage = UIImage.resizedImageWithName("timeline_card_top_background_highlighted")
         /** 2.头像 */
@@ -109,7 +110,7 @@ class YUStatusTopView: UIImageView {
         self.addSubview(vipView)
         self.vipView = vipView;
         /** 4.配图 */
-        let photoView = UIImageView()
+        let photoView = YUPhotoListView()
         self.addSubview(photoView)
         self.photoView = photoView
         /** 5.昵称 */
@@ -157,7 +158,7 @@ class RetweetView : UIImageView {
     /** 被转发微博的正文\内容 */
     weak var retweetContentLabel:UILabel?
     /** 被转发微博的配图 */
-    weak var retweetPhotoView:UIImageView?
+    weak var retweetPhotoView = YUPhotoListView()
     
     var statusFrame:YUStatusFrame? {
         didSet {
@@ -170,10 +171,10 @@ class RetweetView : UIImageView {
             self.retweetContentLabel!.text = retweetStatus!.text
             self.retweetContentLabel!.frame = self.statusFrame!.retweetContentLabelF
             // 3.配图
-            if (retweetStatus!.thumbnail_pic != nil) {
+            if (retweetStatus!.pic_urls != nil) {
                 self.retweetPhotoView!.hidden = false
                 self.retweetPhotoView!.frame = self.statusFrame!.retweetPhotoViewF
-                self.retweetPhotoView!.kf_setImageWithURL(NSURL(string: retweetStatus!.thumbnail_pic!)!, placeholderImage: UIImage.imageWithName("timeline_image_placeholder"))
+                self.retweetPhotoView!.photos = retweetStatus!.pic_urls!
             } else {
                 self.retweetPhotoView!.hidden = true
             }
@@ -183,6 +184,7 @@ class RetweetView : UIImageView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         /** 1.背景图片 */
+        self.userInteractionEnabled = true
         self.image = UIImage.resizedImageWithName("timeline_retweet_background", left: 0.9, top: 0.5)
         /** 2.被转发微博作者的昵称 */
         let retweetNameLabel = UILabel()
@@ -200,7 +202,7 @@ class RetweetView : UIImageView {
         self.addSubview(retweetContentLabel)
         self.retweetContentLabel = retweetContentLabel 
         /** 4.被转发微博的配图 */
-        let retweetPhotoView = UIImageView()
+        let retweetPhotoView = YUPhotoListView()
         self.addSubview(retweetPhotoView)
         self.retweetPhotoView = retweetPhotoView
     }

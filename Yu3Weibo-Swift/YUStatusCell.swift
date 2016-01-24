@@ -27,6 +27,7 @@ class YUStatusCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         // 1.设置cell选中时的背景
         self.selectedBackgroundView = UIView()
+        self.backgroundColor = UIColor.clearColor()
         // 2 添加顶部的view
         let topView = YUStatusTopView()
         self.contentView.addSubview(topView)
@@ -43,6 +44,7 @@ class YUStatusCell: UITableViewCell {
     
     var statusFrame:YUStatusFrame? {
         didSet {
+            self.frame.size.height -= 6
             // 1.topView
             self.topView!.frame = statusFrame!.topViewF
             self.topView!.statusFrame = statusFrame!

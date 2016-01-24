@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		EE19E5BC1C507C0D00A40B2E /* FrameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE19E5BB1C507C0D00A40B2E /* FrameModel.swift */; };
 		EE19E5C01C50B2B000A40B2E /* YUStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE19E5BF1C50B2B000A40B2E /* YUStatusCell.swift */; };
+		EE1EB87D1C53A695002F246E /* YUPhotoBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1EB87C1C53A695002F246E /* YUPhotoBrowser.swift */; };
+		EE1EB88A1C53B231002F246E /* YUBrowserImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1EB8891C53B231002F246E /* YUBrowserImageView.swift */; };
+		EE1EB88C1C53B25C002F246E /* YUWaitingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1EB88B1C53B25C002F246E /* YUWaitingView.swift */; };
 		EE1FA7DD1C4D1660009B7C30 /* YUNewFeatureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1FA7DC1C4D1660009B7C30 /* YUNewFeatureController.swift */; };
 		EE22002C1C5201780021FFE1 /* YUStatusToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE22002B1C5201780021FFE1 /* YUStatusToolbar.swift */; };
 		EE2200381C5257950021FFE1 /* YUStatusTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2200371C5257950021FFE1 /* YUStatusTopView.swift */; };
@@ -25,6 +28,7 @@
 		EE29EEE51C4B81E200CA667F /* YUMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE29EEE41C4B81E200CA667F /* YUMessageViewController.swift */; };
 		EE29EEE91C4B822C00CA667F /* YUDiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE29EEE81C4B822C00CA667F /* YUDiscoverViewController.swift */; };
 		EE29EEED1C4B825A00CA667F /* YUMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE29EEEC1C4B825A00CA667F /* YUMeViewController.swift */; };
+		EE2AAA6C1C54773C00EEE796 /* YUPhotoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2AAA6B1C54773C00EEE796 /* YUPhotoListView.swift */; };
 		EE35A1E71C4CF07500B721BA /* YUNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE35A1E61C4CF07500B721BA /* YUNavigationController.swift */; };
 		EE35A1EA1C4D076300B721BA /* YUTitleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE35A1E91C4D076300B721BA /* YUTitleButton.swift */; };
 		EE6056881C4E6CF60089A04C /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEF0B35F1C4E6C93000BD306 /* Alamofire.framework */; };
@@ -170,6 +174,9 @@
 /* Begin PBXFileReference section */
 		EE19E5BB1C507C0D00A40B2E /* FrameModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrameModel.swift; sourceTree = "<group>"; };
 		EE19E5BF1C50B2B000A40B2E /* YUStatusCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YUStatusCell.swift; sourceTree = "<group>"; };
+		EE1EB87C1C53A695002F246E /* YUPhotoBrowser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YUPhotoBrowser.swift; sourceTree = "<group>"; };
+		EE1EB8891C53B231002F246E /* YUBrowserImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YUBrowserImageView.swift; sourceTree = "<group>"; };
+		EE1EB88B1C53B25C002F246E /* YUWaitingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YUWaitingView.swift; sourceTree = "<group>"; };
 		EE1FA7DC1C4D1660009B7C30 /* YUNewFeatureController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YUNewFeatureController.swift; sourceTree = "<group>"; };
 		EE22002B1C5201780021FFE1 /* YUStatusToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YUStatusToolbar.swift; sourceTree = "<group>"; };
 		EE2200371C5257950021FFE1 /* YUStatusTopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YUStatusTopView.swift; sourceTree = "<group>"; };
@@ -192,6 +199,7 @@
 		EE29EEE41C4B81E200CA667F /* YUMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YUMessageViewController.swift; sourceTree = "<group>"; };
 		EE29EEE81C4B822C00CA667F /* YUDiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YUDiscoverViewController.swift; sourceTree = "<group>"; };
 		EE29EEEC1C4B825A00CA667F /* YUMeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YUMeViewController.swift; sourceTree = "<group>"; };
+		EE2AAA6B1C54773C00EEE796 /* YUPhotoListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YUPhotoListView.swift; sourceTree = "<group>"; };
 		EE35A1E61C4CF07500B721BA /* YUNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YUNavigationController.swift; sourceTree = "<group>"; };
 		EE35A1E91C4D076300B721BA /* YUTitleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YUTitleButton.swift; sourceTree = "<group>"; };
 		EE6056DD1C4E77020089A04C /* DataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
@@ -310,7 +318,11 @@
 				EE35A1E91C4D076300B721BA /* YUTitleButton.swift */,
 				EE19E5BF1C50B2B000A40B2E /* YUStatusCell.swift */,
 				EE2200371C5257950021FFE1 /* YUStatusTopView.swift */,
+				EE2AAA6B1C54773C00EEE796 /* YUPhotoListView.swift */,
 				EE22002B1C5201780021FFE1 /* YUStatusToolbar.swift */,
+				EE1EB87C1C53A695002F246E /* YUPhotoBrowser.swift */,
+				EE1EB8891C53B231002F246E /* YUBrowserImageView.swift */,
+				EE1EB88B1C53B25C002F246E /* YUWaitingView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -595,7 +607,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE1EB88C1C53B25C002F246E /* YUWaitingView.swift in Sources */,
 				EE29EEDD1C4B70A200CA667F /* YUBadgeButton.swift in Sources */,
+				EE1EB87D1C53A695002F246E /* YUPhotoBrowser.swift in Sources */,
 				EE22002C1C5201780021FFE1 /* YUStatusToolbar.swift in Sources */,
 				EE29EED61C4B658E00CA667F /* YUTabBarViewController.swift in Sources */,
 				EE29EEDB1C4B69D700CA667F /* YUTabBarButton.swift in Sources */,
@@ -615,6 +629,8 @@
 				EE29EEE11C4B81AF00CA667F /* YUHomeViewController.swift in Sources */,
 				EE35A1E71C4CF07500B721BA /* YUNavigationController.swift in Sources */,
 				EE1FA7DD1C4D1660009B7C30 /* YUNewFeatureController.swift in Sources */,
+				EE1EB88A1C53B231002F246E /* YUBrowserImageView.swift in Sources */,
+				EE2AAA6C1C54773C00EEE796 /* YUPhotoListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
