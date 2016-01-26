@@ -10,7 +10,7 @@ import UIKit
 
 let YUPhotoW:CGFloat = 100
 let YUPhotoH:CGFloat = 100
-let YUOnlyPhotoW:CGFloat = 150
+let YUOnlyPhotoW:CGFloat = 200
 let YUOnlyPhotoH:CGFloat = 200
 let YUPhotoMargin:CGFloat =  (UIScreen.mainScreen().bounds.size.width - 3 * YUPhotoW) / 4
 
@@ -86,14 +86,14 @@ class YUPhotoListView: UIView, YUPhotoBrowserDelegate {
         }
     }
     
-    func photoBrowser(browser: YUPhotoBrowser, index: Int) -> UIImage {
+    func photoBrowser(browser: YUPhotoBrowser, index: Int) -> UIImage? {
         let btn = self.subviews[index] as! UIButton
-        return btn.currentBackgroundImage!
+        return btn.currentBackgroundImage
     }
     
-    func photoBrowserHighQualityImage(browser: YUPhotoBrowser, index: Int) -> String {
+    func photoBrowserHighQualityImage(browser: YUPhotoBrowser, index: Int) -> String? {
         //print(index)
         //print(self.photos[index].thumbnail_pic!.stringByReplacingOccurrencesOfString("thumbnail", withString: "bmiddle"))
-        return self.photos[index].thumbnail_pic!.stringByReplacingOccurrencesOfString("thumbnail", withString: "bmiddle")
+        return self.photos[index].thumbnail_pic?.stringByReplacingOccurrencesOfString("thumbnail", withString: "bmiddle")
     }
 }

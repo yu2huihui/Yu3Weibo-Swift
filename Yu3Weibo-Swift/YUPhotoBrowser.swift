@@ -12,9 +12,9 @@ import Kingfisher
 let PhotoBrowserImageViewMargin:CGFloat = 10
 @objc protocol YUPhotoBrowserDelegate : NSObjectProtocol {
 
-func photoBrowser(browser:YUPhotoBrowser, index:Int) -> UIImage
+func photoBrowser(browser:YUPhotoBrowser, index:Int) -> UIImage?
 
-optional func photoBrowserHighQualityImage(browser:YUPhotoBrowser, index:Int) -> String
+optional func photoBrowserHighQualityImage(browser:YUPhotoBrowser, index:Int) -> String?
 }
 
 class YUPhotoBrowser: UIView, UIScrollViewDelegate {
@@ -129,7 +129,7 @@ class YUPhotoBrowser: UIView, UIScrollViewDelegate {
         currentImageIndex = index
         if imageView?.hasLoadedImage == true {return}
         if self.highQualityImageURLForIndex(index) != nil {
-            imageView?.kf_setImageWithURL(NSURL(string:self.highQualityImageURLForIndex(index)!)!, placeholderImage: self.placeholderImageForIndex(index)!)
+            imageView?.setImageWithURL(NSURL(string:self.highQualityImageURLForIndex(index)!)!, placeholder: self.placeholderImageForIndex(index))
         } else {
             imageView?.image = self.placeholderImageForIndex(index)
         }

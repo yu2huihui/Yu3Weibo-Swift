@@ -10,10 +10,11 @@ import UIKit
 
 let PhotoBrowserBackgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.95)
 let WaitingViewProgressMode:SDWaitingViewMode = .PieDiagram
+
 class YUBrowserImageView: UIImageView, UIGestureRecognizerDelegate {
     var progress:CGFloat = 0.05 {
         didSet {
-            if waitingView != nil { waitingView!.progress = progress }
+            waitingView.progress = self.progress
         }
     }
     var isScaled:Bool {
@@ -21,7 +22,7 @@ class YUBrowserImageView: UIImageView, UIGestureRecognizerDelegate {
     }
     var hasLoadedImage:Bool = false
     
-    private weak var waitingView:YUWaitingView?
+    private var waitingView = YUWaitingView()
     private var didCheckSize:Bool = false
     private var scroll:UIScrollView?
     private var scrollImageView = UIImageView()
@@ -44,13 +45,13 @@ class YUBrowserImageView: UIImageView, UIGestureRecognizerDelegate {
         let pinch = UIPinchGestureRecognizer(target: self, action: Selector("zoomImage:"))
         pinch.delegate = self
         self.addGestureRecognizer(pinch)
+        self.addSubview(waitingView)
     }
 
     override func layoutSubviews() {
-        if waitingView != nil {
-            waitingView!.center = CGPointMake(self.frame.size.width * 0.5, self.frame.size.height * 0.5)
-            let imageSize = self.image!.size
-            if (self.bounds.size.width * (imageSize.height / imageSize.width) > self.bounds.size.height) {
+            let imageSize = self.image?.size
+        if imageSize != nil {
+            if (self.bounds.size.width * (imageSize!.height / imageSize!.width) > self.bounds.size.height) {
                 if scroll == nil {
                     let scrollView = UIScrollView()
                     scrollView.backgroundColor = UIColor.whiteColor()
@@ -60,12 +61,11 @@ class YUBrowserImageView: UIImageView, UIGestureRecognizerDelegate {
                     scrollView.backgroundColor = PhotoBrowserBackgroundColor
                     scroll = scrollView
                     self.addSubview(scrollView)
-                    if waitingView != nil {
-                        self.bringSubviewToFront(waitingView!)
-                    }
+                    self.bringSubviewToFront(scrollView)
+                    
                 }
                 scroll!.frame = self.bounds
-                let imageViewH = self.bounds.size.width * (imageSize.height / imageSize.width)
+                let imageViewH = self.bounds.size.width * (imageSize!.height / imageSize!.width)
                 scrollImageView.bounds = CGRectMake(0, 0, scroll!.frame.size.width, imageViewH)
                 scrollImageView.center = CGPointMake(scroll!.frame.size.width * 0.5, scrollImageView.frame.size.height * 0.5);
                 scroll!.contentSize = CGSizeMake(0, scrollImageView.bounds.size.height)
@@ -78,22 +78,20 @@ class YUBrowserImageView: UIImageView, UIGestureRecognizerDelegate {
         }
     }
     
-    func setImageWithURL(url:NSURL,placeholder:UIImage) {
-        let waiting = YUWaitingView()
-        waiting.bounds = CGRectMake(0, 0, 100, 100)
-        waiting.mode = .PieDiagram
-        waitingView = waiting
-        self.addSubview(waiting)
+    func setImageWithURL(url:NSURL,placeholder:UIImage?) {
+        waitingView.center = CGPointMake(self.frame.size.width * 0.5, self.frame.size.height * 0.5)
+        waitingView.bounds = CGRectMake(0, 0, 100, 100)
+        waitingView.mode = .PieDiagram
         
-        weak var imageViewWeak = self
+       // weak var imageViewWeak = self
         self.kf_setImageWithURL(url, placeholderImage: placeholder, optionsInfo: .None, progressBlock: { (receivedSize, totalSize) -> () in
-            imageViewWeak!.progress = CGFloat(receivedSize / totalSize)
+            self.progress = CGFloat(receivedSize / totalSize)
             }) { (image, error, cacheType, imageURL) -> () in
-            imageViewWeak!.removeWaitingView()
+            self.waitingView.removeFromSuperview()
             if (error != nil) {
                 let label = UILabel()
                 label.bounds = CGRectMake(0, 0, 160, 30)
-                label.center = CGPointMake(imageViewWeak!.bounds.size.width * 0.5, imageViewWeak!.bounds.size.height * 0.5)
+                label.center = CGPointMake(self.bounds.size.width * 0.5, self.bounds.size.height * 0.5)
                 label.text = "图片加载失败"
                 label.font = UIFont.systemFontOfSize(16)
                 label.textColor = UIColor.whiteColor()
@@ -101,18 +99,16 @@ class YUBrowserImageView: UIImageView, UIGestureRecognizerDelegate {
                 label.layer.cornerRadius = 5
                 label.clipsToBounds = true
                 label.textAlignment = .Center
-                imageViewWeak!.addSubview(label)
+                self.addSubview(label)
             } else {
                 self.scrollImageView.image = image
+                self.addSubview(self.scrollImageView)
                 self.scrollImageView.setNeedsDisplay()
             }
         }
 
     }
     
-    func removeWaitingView() {
-        waitingView!.removeFromSuperview()
-    }
     func zoomImage(recognizer:UIPinchGestureRecognizer) {
         self.prepareForImageViewScaling()
         let scale = recognizer.scale

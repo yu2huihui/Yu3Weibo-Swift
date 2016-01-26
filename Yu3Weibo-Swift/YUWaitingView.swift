@@ -67,7 +67,7 @@ class YUWaitingView: UIView {
                 CGContextAddArc(ctx, xCenter, yCenter, radius, CGFloat(-M_PI * 0.5), CGFloat(to), 1)
                 CGContextClosePath(ctx)
                 CGContextFillPath(ctx)
-            //break
+            break
             default :
                 CGContextSetLineWidth(ctx, 15)
                 CGContextSetLineCap(ctx, .Round)
@@ -75,6 +75,7 @@ class YUWaitingView: UIView {
                 let radius = min(rect.size.width, rect.size.height) * 0.5 - WaitingViewItemMargin
                 CGContextAddArc(ctx, xCenter, yCenter, radius, CGFloat(-M_PI * 0.5), CGFloat(to), 0)
                 CGContextStrokePath(ctx)
+            break
         }
     }
 }

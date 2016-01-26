@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EE0F26091C57C25E00A6519C /* ZLSwiftRefresh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE1BC68A1C5794A700FD4718 /* ZLSwiftRefresh.framework */; };
+		EE0F260A1C57C25E00A6519C /* ZLSwiftRefresh.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EE1BC68A1C5794A700FD4718 /* ZLSwiftRefresh.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EE19E5BC1C507C0D00A40B2E /* FrameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE19E5BB1C507C0D00A40B2E /* FrameModel.swift */; };
 		EE19E5C01C50B2B000A40B2E /* YUStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE19E5BF1C50B2B000A40B2E /* YUStatusCell.swift */; };
 		EE1EB87D1C53A695002F246E /* YUPhotoBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1EB87C1C53A695002F246E /* YUPhotoBrowser.swift */; };
@@ -42,6 +44,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		EE0F260B1C57C25E00A6519C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EE1BC67A1C5794A700FD4718 /* ZLSwiftRefresh.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = CD30DF941BC8CC180042F0B6;
+			remoteInfo = ZLSwiftRefresh;
+		};
+		EE1BC6891C5794A700FD4718 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EE1BC67A1C5794A700FD4718 /* ZLSwiftRefresh.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CD30DF951BC8CC180042F0B6;
+			remoteInfo = ZLSwiftRefresh;
+		};
+		EE1BC68B1C5794A700FD4718 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EE1BC67A1C5794A700FD4718 /* ZLSwiftRefresh.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CD30DF9F1BC8CC180042F0B6;
+			remoteInfo = ZLSwiftRefreshTests;
+		};
 		EE29EEB51C4B643200CA667F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = EE29EE981C4B643200CA667F /* Project object */;
@@ -164,6 +187,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				EEE780811C4F7BA900C4D905 /* Kingfisher.framework in Embed Frameworks */,
+				EE0F260A1C57C25E00A6519C /* ZLSwiftRefresh.framework in Embed Frameworks */,
 				EE6056891C4E6CF60089A04C /* Alamofire.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -174,6 +198,7 @@
 /* Begin PBXFileReference section */
 		EE19E5BB1C507C0D00A40B2E /* FrameModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrameModel.swift; sourceTree = "<group>"; };
 		EE19E5BF1C50B2B000A40B2E /* YUStatusCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YUStatusCell.swift; sourceTree = "<group>"; };
+		EE1BC67A1C5794A700FD4718 /* ZLSwiftRefresh.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ZLSwiftRefresh.xcodeproj; path = "ZLSwiftRefresh-master/ZLSwiftRefresh.xcodeproj"; sourceTree = "<group>"; };
 		EE1EB87C1C53A695002F246E /* YUPhotoBrowser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YUPhotoBrowser.swift; sourceTree = "<group>"; };
 		EE1EB8891C53B231002F246E /* YUBrowserImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YUBrowserImageView.swift; sourceTree = "<group>"; };
 		EE1EB88B1C53B25C002F246E /* YUWaitingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YUWaitingView.swift; sourceTree = "<group>"; };
@@ -216,6 +241,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EEE780801C4F7BA900C4D905 /* Kingfisher.framework in Frameworks */,
+				EE0F26091C57C25E00A6519C /* ZLSwiftRefresh.framework in Frameworks */,
 				EE6056881C4E6CF60089A04C /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -237,6 +263,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EE1BC67B1C5794A700FD4718 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EE1BC68A1C5794A700FD4718 /* ZLSwiftRefresh.framework */,
+				EE1BC68C1C5794A700FD4718 /* ZLSwiftRefreshTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		EE29EE971C4B643200CA667F = {
 			isa = PBXGroup;
 			children = (
@@ -244,6 +279,7 @@
 				EE29EEB71C4B643200CA667F /* Yu3Weibo-SwiftTests */,
 				EE29EEC21C4B643200CA667F /* Yu3Weibo-SwiftUITests */,
 				EE29EEA11C4B643200CA667F /* Products */,
+				EE1BC67A1C5794A700FD4718 /* ZLSwiftRefresh.xcodeproj */,
 				EEE7806E1C4F7B9300C4D905 /* Kingfisher.xcodeproj */,
 				EEF0B3541C4E6C93000BD306 /* Alamofire.xcodeproj */,
 			);
@@ -394,6 +430,7 @@
 			dependencies = (
 				EE60568B1C4E6CF60089A04C /* PBXTargetDependency */,
 				EEE780831C4F7BA900C4D905 /* PBXTargetDependency */,
+				EE0F260C1C57C25E00A6519C /* PBXTargetDependency */,
 			);
 			name = "Yu3Weibo-Swift";
 			productName = "Yu3Weibo-Swift";
@@ -479,6 +516,10 @@
 					ProductGroup = EEE7806F1C4F7B9300C4D905 /* Products */;
 					ProjectRef = EEE7806E1C4F7B9300C4D905 /* Kingfisher.xcodeproj */;
 				},
+				{
+					ProductGroup = EE1BC67B1C5794A700FD4718 /* Products */;
+					ProjectRef = EE1BC67A1C5794A700FD4718 /* ZLSwiftRefresh.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -490,6 +531,20 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		EE1BC68A1C5794A700FD4718 /* ZLSwiftRefresh.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ZLSwiftRefresh.framework;
+			remoteRef = EE1BC6891C5794A700FD4718 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EE1BC68C1C5794A700FD4718 /* ZLSwiftRefreshTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ZLSwiftRefreshTests.xctest;
+			remoteRef = EE1BC68B1C5794A700FD4718 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		EEE780771C4F7B9400C4D905 /* Kingfisher-Demo.app */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.application;
@@ -653,6 +708,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		EE0F260C1C57C25E00A6519C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ZLSwiftRefresh;
+			targetProxy = EE0F260B1C57C25E00A6519C /* PBXContainerItemProxy */;
+		};
 		EE29EEB61C4B643200CA667F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = EE29EE9F1C4B643200CA667F /* Yu3Weibo-Swift */;

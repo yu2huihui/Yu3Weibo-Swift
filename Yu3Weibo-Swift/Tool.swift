@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class YUWeiboTool {
+struct YUWeiboTool {
     static func chooseRootController() {
         let application = UIApplication.sharedApplication()
         let key = "CFBundleVersion"
@@ -29,7 +29,7 @@ class YUWeiboTool {
     }
 }
 
-class YUAccountTool {
+struct YUAccountTool {
     static let accountFile = (NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).last! as NSString).stringByAppendingPathComponent("account.data")
     
     static func saveAccount(account:YUAccount) -> Void {

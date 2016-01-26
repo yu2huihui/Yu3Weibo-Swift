@@ -146,6 +146,7 @@ class YUAccount: NSObject, NSCoding {
     var remind_in:NSString?
     var uid:NSString?
     var expiresTime:NSDate? // 账号的过期时间
+    var name:NSString?
     
     init(dic:Dictionary<String, AnyObject>) {
         super.init()
@@ -159,6 +160,7 @@ class YUAccount: NSObject, NSCoding {
         self.remind_in = aDecoder.decodeObjectForKey("remind_in") as? NSString
         self.uid = aDecoder.decodeObjectForKey("uid") as? NSString
         self.expiresTime = aDecoder.decodeObjectForKey("expiresTime") as? NSDate
+        self.name = aDecoder.decodeObjectForKey("name") as? NSString
     }
     
     func encodeWithCoder(aCoder: NSCoder) {
@@ -167,5 +169,6 @@ class YUAccount: NSObject, NSCoding {
         aCoder.encodeObject(self.remind_in, forKey: "remind_in")
         aCoder.encodeObject(self.uid, forKey: "uid")
         aCoder.encodeObject(self.expiresTime, forKey: "expiresTime")
+        aCoder.encodeObject(self.name, forKey: "name")
     }
 }

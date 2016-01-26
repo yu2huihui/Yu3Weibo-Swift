@@ -18,7 +18,16 @@ class YUTitleButton: UIButton {
         self.setBackgroundImage(UIImage.resizedImageWithName("navigationbar_filter_background_highlighted"), forState: .Highlighted)
         self.setTitleColor(UIColor.blackColor(), forState: .Normal)
     }
-
+    
+    override func setTitle(title: String?, forState state: UIControlState) {
+        // 根据title计算自己的宽度
+        let titleW = NSString(string:title!).sizeWithAttributes([NSFontAttributeName:self.titleLabel!.font]).width
+        var frame = self.frame
+        frame.size.width = titleW + 20 + 5
+        self.frame = frame
+        super.setTitle(title, forState: state)
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
