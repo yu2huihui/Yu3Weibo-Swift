@@ -10,8 +10,8 @@ import UIKit
 
 @objc protocol YUTabBarDelegate:NSObjectProtocol {
     optional func tabBarDidSelected(tabBar:YUTabBar, from:Int, to:Int)
+    optional func tabBarDidClickedPlusButton(tabBar:YUTabBar)
 }
-
 
 class YUTabBar: UIView {
     weak var delegate:YUTabBarDelegate?
@@ -29,8 +29,15 @@ class YUTabBar: UIView {
         plusButton.setImage(UIImage.imageWithName("tabbar_compose_icon_add_highlighted"), forState:.Highlighted)
         
         plusButton.bounds = CGRectMake(0, 0, plusButton.currentBackgroundImage!.size.width, plusButton.currentBackgroundImage!.size.height)
+        plusButton.addTarget(self, action: Selector("plusButtonClick"), forControlEvents: .TouchUpInside)
         self.addSubview(plusButton)
         self.plusButton = plusButton
+    }
+    
+    func plusButtonClick() {
+        if ((self.delegate?.respondsToSelector(Selector("tabBarDidClickedPlusButton:"))) != nil) {
+            self.delegate!.tabBarDidClickedPlusButton!(self)
+        }
     }
 
     required init?(coder aDecoder: NSCoder) {

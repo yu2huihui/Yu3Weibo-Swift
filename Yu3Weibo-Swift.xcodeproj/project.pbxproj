@@ -17,6 +17,11 @@
 		EE1FA7DD1C4D1660009B7C30 /* YUNewFeatureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1FA7DC1C4D1660009B7C30 /* YUNewFeatureController.swift */; };
 		EE22002C1C5201780021FFE1 /* YUStatusToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE22002B1C5201780021FFE1 /* YUStatusToolbar.swift */; };
 		EE2200381C5257950021FFE1 /* YUStatusTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2200371C5257950021FFE1 /* YUStatusTopView.swift */; };
+		EE26EF711C5B2B0F0063C6A6 /* YUTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE26EF701C5B2B0F0063C6A6 /* YUTextView.swift */; };
+		EE26EF7E1C5B33060063C6A6 /* YUComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE26EF7D1C5B33060063C6A6 /* YUComposeViewController.swift */; };
+		EE26EF851C5B41CE0063C6A6 /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = EE26EF811C5B41CE0063C6A6 /* MBProgressHUD+MJ.m */; };
+		EE26EF861C5B41CE0063C6A6 /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EE26EF821C5B41CE0063C6A6 /* MBProgressHUD.bundle */; };
+		EE26EF871C5B41CE0063C6A6 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = EE26EF841C5B41CE0063C6A6 /* MBProgressHUD.m */; };
 		EE29EEA41C4B643200CA667F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE29EEA31C4B643200CA667F /* AppDelegate.swift */; };
 		EE29EEAB1C4B643200CA667F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE29EEAA1C4B643200CA667F /* Assets.xcassets */; };
 		EE29EEAE1C4B643200CA667F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE29EEAC1C4B643200CA667F /* LaunchScreen.storyboard */; };
@@ -37,6 +42,7 @@
 		EE6056891C4E6CF60089A04C /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EEF0B35F1C4E6C93000BD306 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EE6056DE1C4E77020089A04C /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6056DD1C4E77020089A04C /* DataModel.swift */; };
 		EE6056E01C4E7D500089A04C /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6056DF1C4E7D500089A04C /* Tool.swift */; };
+		EE61C51B1C58B8AB00ABD45A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE61C51A1C58B8AB00ABD45A /* Constants.swift */; };
 		EEE780801C4F7BA900C4D905 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEE780791C4F7B9400C4D905 /* Kingfisher.framework */; };
 		EEE780811C4F7BA900C4D905 /* Kingfisher.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EEE780791C4F7B9400C4D905 /* Kingfisher.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EEE780851C4F7DF400C4D905 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE780841C4F7DF400C4D905 /* Extensions.swift */; };
@@ -205,6 +211,14 @@
 		EE1FA7DC1C4D1660009B7C30 /* YUNewFeatureController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YUNewFeatureController.swift; sourceTree = "<group>"; };
 		EE22002B1C5201780021FFE1 /* YUStatusToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YUStatusToolbar.swift; sourceTree = "<group>"; };
 		EE2200371C5257950021FFE1 /* YUStatusTopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YUStatusTopView.swift; sourceTree = "<group>"; };
+		EE26EF701C5B2B0F0063C6A6 /* YUTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YUTextView.swift; sourceTree = "<group>"; };
+		EE26EF7D1C5B33060063C6A6 /* YUComposeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YUComposeViewController.swift; sourceTree = "<group>"; };
+		EE26EF801C5B41CE0063C6A6 /* MBProgressHUD+MJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+MJ.h"; sourceTree = "<group>"; };
+		EE26EF811C5B41CE0063C6A6 /* MBProgressHUD+MJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+MJ.m"; sourceTree = "<group>"; };
+		EE26EF821C5B41CE0063C6A6 /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MBProgressHUD.bundle; sourceTree = "<group>"; };
+		EE26EF831C5B41CE0063C6A6 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		EE26EF841C5B41CE0063C6A6 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		EE26EF951C5B43060063C6A6 /* YueWeibo-Swift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YueWeibo-Swift-Bridging-Header.h"; sourceTree = "<group>"; };
 		EE29EEA01C4B643200CA667F /* Yu3Weibo-Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Yu3Weibo-Swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE29EEA31C4B643200CA667F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EE29EEAA1C4B643200CA667F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -229,6 +243,7 @@
 		EE35A1E91C4D076300B721BA /* YUTitleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YUTitleButton.swift; sourceTree = "<group>"; };
 		EE6056DD1C4E77020089A04C /* DataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		EE6056DF1C4E7D500089A04C /* Tool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tool.swift; sourceTree = "<group>"; };
+		EE61C51A1C58B8AB00ABD45A /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		EEE7806E1C4F7B9300C4D905 /* Kingfisher.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Kingfisher.xcodeproj; path = "Kingfisher-master/Kingfisher.xcodeproj"; sourceTree = "<group>"; };
 		EEE780841C4F7DF400C4D905 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		EEF0B3511C4E64AA000BD306 /* YUOAuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YUOAuthViewController.swift; sourceTree = "<group>"; };
@@ -270,6 +285,18 @@
 				EE1BC68C1C5794A700FD4718 /* ZLSwiftRefreshTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		EE26EF7F1C5B41CE0063C6A6 /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				EE26EF801C5B41CE0063C6A6 /* MBProgressHUD+MJ.h */,
+				EE26EF811C5B41CE0063C6A6 /* MBProgressHUD+MJ.m */,
+				EE26EF821C5B41CE0063C6A6 /* MBProgressHUD.bundle */,
+				EE26EF831C5B41CE0063C6A6 /* MBProgressHUD.h */,
+				EE26EF841C5B41CE0063C6A6 /* MBProgressHUD.m */,
+			);
+			path = MBProgressHUD;
 			sourceTree = "<group>";
 		};
 		EE29EE971C4B643200CA667F = {
@@ -338,9 +365,12 @@
 		EE29EED31C4B64E300CA667F /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				EE26EF7F1C5B41CE0063C6A6 /* MBProgressHUD */,
 				EE6056DF1C4E7D500089A04C /* Tool.swift */,
 				EE29EEA31C4B643200CA667F /* AppDelegate.swift */,
 				EEE780841C4F7DF400C4D905 /* Extensions.swift */,
+				EE61C51A1C58B8AB00ABD45A /* Constants.swift */,
+				EE26EF951C5B43060063C6A6 /* YueWeibo-Swift-Bridging-Header.h */,
 			);
 			name = Other;
 			sourceTree = "<group>";
@@ -359,6 +389,7 @@
 				EE1EB87C1C53A695002F246E /* YUPhotoBrowser.swift */,
 				EE1EB8891C53B231002F246E /* YUBrowserImageView.swift */,
 				EE1EB88B1C53B25C002F246E /* YUWaitingView.swift */,
+				EE26EF701C5B2B0F0063C6A6 /* YUTextView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -383,6 +414,7 @@
 				EE29EEE01C4B81AF00CA667F /* YUHomeViewController.swift */,
 				EE29EED51C4B658E00CA667F /* YUTabBarViewController.swift */,
 				EE35A1E61C4CF07500B721BA /* YUNavigationController.swift */,
+				EE26EF7D1C5B33060063C6A6 /* YUComposeViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -638,6 +670,7 @@
 			files = (
 				EE29EEAE1C4B643200CA667F /* LaunchScreen.storyboard in Resources */,
 				EE29EEAB1C4B643200CA667F /* Assets.xcassets in Resources */,
+				EE26EF861C5B41CE0063C6A6 /* MBProgressHUD.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -662,14 +695,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE61C51B1C58B8AB00ABD45A /* Constants.swift in Sources */,
 				EE1EB88C1C53B25C002F246E /* YUWaitingView.swift in Sources */,
 				EE29EEDD1C4B70A200CA667F /* YUBadgeButton.swift in Sources */,
 				EE1EB87D1C53A695002F246E /* YUPhotoBrowser.swift in Sources */,
+				EE26EF851C5B41CE0063C6A6 /* MBProgressHUD+MJ.m in Sources */,
 				EE22002C1C5201780021FFE1 /* YUStatusToolbar.swift in Sources */,
 				EE29EED61C4B658E00CA667F /* YUTabBarViewController.swift in Sources */,
 				EE29EEDB1C4B69D700CA667F /* YUTabBarButton.swift in Sources */,
+				EE26EF871C5B41CE0063C6A6 /* MBProgressHUD.m in Sources */,
 				EE2200381C5257950021FFE1 /* YUStatusTopView.swift in Sources */,
 				EE19E5C01C50B2B000A40B2E /* YUStatusCell.swift in Sources */,
+				EE26EF7E1C5B33060063C6A6 /* YUComposeViewController.swift in Sources */,
 				EE19E5BC1C507C0D00A40B2E /* FrameModel.swift in Sources */,
 				EE6056E01C4E7D500089A04C /* Tool.swift in Sources */,
 				EE29EEA41C4B643200CA667F /* AppDelegate.swift in Sources */,
@@ -680,6 +717,7 @@
 				EE29EED81C4B676D00CA667F /* YUTabBar.swift in Sources */,
 				EE35A1EA1C4D076300B721BA /* YUTitleButton.swift in Sources */,
 				EEE780851C4F7DF400C4D905 /* Extensions.swift in Sources */,
+				EE26EF711C5B2B0F0063C6A6 /* YUTextView.swift in Sources */,
 				EEF0B3521C4E64AA000BD306 /* YUOAuthViewController.swift in Sources */,
 				EE29EEE11C4B81AF00CA667F /* YUHomeViewController.swift in Sources */,
 				EE35A1E71C4CF07500B721BA /* YUNavigationController.swift in Sources */,
@@ -839,6 +877,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "cn.yu3.Yu3Weibo-Swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/yu3/Desktop/项目实战/Yu3Weibo-Swift/Yu3Weibo-Swift/YueWeibo-Swift-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -851,6 +890,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "cn.yu3.Yu3Weibo-Swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/yu3/Desktop/项目实战/Yu3Weibo-Swift/Yu3Weibo-Swift/YueWeibo-Swift-Bridging-Header.h";
 			};
 			name = Release;
 		};

@@ -8,12 +8,6 @@
 
 import UIKit
 
-let YUPhotoW:CGFloat = 100
-let YUPhotoH:CGFloat = 100
-let YUOnlyPhotoW:CGFloat = 200
-let YUOnlyPhotoH:CGFloat = 200
-let YUPhotoMargin:CGFloat =  (UIScreen.mainScreen().bounds.size.width - 3 * YUPhotoW) / 4
-
 class YUPhotoListView: UIView, YUPhotoBrowserDelegate {
     /**
     *  需要展示的图片

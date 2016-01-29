@@ -11,6 +11,23 @@ import UIKit
 class YUTabBarViewController: UITabBarController, YUTabBarDelegate {
     weak var myTabBar:YUTabBar!
 
+    func tabBarDidSelected(tabBar:YUTabBar, from:Int, to:Int) {
+        self.selectedIndex = to
+    }
+    
+    func tabBarDidClickedPlusButton(tabBar: YUTabBar) {
+        self.presentViewController(YUNavigationController(rootViewController: YUComposeViewController()), animated: true, completion: nil)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        for child in self.tabBar.subviews {
+            if ((child as? UIControl) != nil) {
+                child.removeFromSuperview()
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupTabBar()
@@ -23,19 +40,6 @@ class YUTabBarViewController: UITabBarController, YUTabBarDelegate {
         myTabBar.delegate = self
         self.tabBar.addSubview(myTabBar)
         self.myTabBar = myTabBar
-    }
-    
-    func tabBarDidSelected(tabBar:YUTabBar, from:Int, to:Int) {
-        self.selectedIndex = to
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        for child in self.tabBar.subviews {
-            if ((child as? UIControl) != nil) {
-                child.removeFromSuperview()
-            }
-        }
     }
     
     func setupAllChildViewControllers() {

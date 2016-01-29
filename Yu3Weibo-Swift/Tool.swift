@@ -42,7 +42,7 @@ struct YUAccountTool {
     static func account() -> YUAccount? {
         let account = NSKeyedUnarchiver.unarchiveObjectWithFile(accountFile) as? YUAccount
         let now = NSDate()
-        if account!.expiresTime != nil {
+        if account?.expiresTime != nil {
             if (now.compare(account!.expiresTime!)) == NSComparisonResult.OrderedAscending { // 还没有过期
                 return account
             } else {

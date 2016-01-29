@@ -7,20 +7,6 @@
 //
 
 import UIKit
-/** 昵称的字体 */
-let YUStatusNameFont = UIFont.systemFontOfSize(15)
-/** 被转发微博作者昵称的字体 */
-let YURetweetStatusNameFont = YUStatusNameFont
-/** 时间的字体 */
-let YUStatusTimeFont = UIFont.systemFontOfSize(12)
-/** 来源的字体 */
-let YUStatusSourceFont = YUStatusTimeFont
-/** 正文的字体 */
-let YUStatusContentFont = UIFont.systemFontOfSize(13)
-/** 被转发微博正文的字体 */
-let YURetweetStatusContentFont = YUStatusContentFont
-/** cell的边框宽度 */
-let YUStatusCellBorder:CGFloat = 10
 
 class YUStatusFrame : NSObject {
     /** 顶部的view */

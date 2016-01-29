@@ -17,7 +17,7 @@ class YUOAuthViewController: UIViewController, UIWebViewDelegate {
         webView.frame = self.view.bounds
         webView.delegate = self
         self.view.addSubview(webView)
-        let url =  NSURL(string: "https://api.weibo.com/oauth2/authorize?client_id=1421524559&response_type=code&redirect_uri=http://www.cnblogs.com/yu3-/")!
+        let url =  NSURL(string: LoginURLStr)!
         webView.loadRequest(NSURLRequest(URL: url))
     }
 
@@ -33,11 +33,11 @@ class YUOAuthViewController: UIViewController, UIWebViewDelegate {
     
     func accessTokenWithCode(code:String) {
         let params = [
-            "client_id":"1421524559",
-            "client_secret" : "997bdcb2d1eafc1c9890f64acdd9844d",
+            "client_id":AppKey,
+            "client_secret" : AppSecret,
             "code" : "\(code)",
             "grant_type" : "authorization_code",
-            "redirect_uri" : "http://www.cnblogs.com/yu3-/"
+            "redirect_uri" : RedirectURI
         ]
         let urlStr = "https://api.weibo.com/oauth2/access_token"
         Alamofire.request(.POST, urlStr, parameters: params, encoding: .URL, headers: nil).responseJSON { (response) -> Void in
