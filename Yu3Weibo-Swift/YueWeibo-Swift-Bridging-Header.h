@@ -6,4 +6,6 @@
 //  Copyright © 2016年 yu3. All rights reserved.
 //
 
+#import "MJPhotoBrowser.h"
+#import "MJPhoto.h"
 #import "MBProgressHUD+MJ.h"
