@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Alamofire
 
 class YUOAuthViewController: UIViewController, UIWebViewDelegate {
 
@@ -40,7 +39,7 @@ class YUOAuthViewController: UIViewController, UIWebViewDelegate {
             "redirect_uri" : RedirectURI
         ]
         let urlStr = "https://api.weibo.com/oauth2/access_token"
-        Alamofire.request(.POST, urlStr, parameters: params, encoding: .URL, headers: nil).responseJSON { (response) -> Void in
+        YUHttpTool.postWithURL(urlStr, params: params) { (response) -> Void in
             let result = response.result
             if result.error != nil {
                 print("请求失败：\(result.error)")

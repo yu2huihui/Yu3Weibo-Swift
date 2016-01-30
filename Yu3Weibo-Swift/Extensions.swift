@@ -29,12 +29,23 @@ extension NSDate {
         return (year == currentYear) && (month == currentMonth) && (day == currentDay)
     }
     
+    func dateWithYMD() -> NSDate {
+        let fmt = NSDateFormatter()
+        fmt.dateFormat = "yyyy-MM-dd"
+        let selfStr = fmt.stringFromDate(self)
+        return fmt.dateFromString(selfStr)!
+    }
     /**
     *  是否为昨天
     */
     func isYesterday() -> Bool {
-        //....wait
-        return false
+        let nowDate = NSDate().dateWithYMD()
+        let selfDate = self.dateWithYMD()
+        
+        // 获得nowDate和selfDate的差距
+        let calendar = NSCalendar.currentCalendar()
+        let cmps = calendar.components(.Day, fromDate: selfDate, toDate: nowDate, options: .WrapComponents)
+        return cmps.day == 1
     }
     
     /**

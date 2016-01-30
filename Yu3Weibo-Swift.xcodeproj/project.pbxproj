@@ -44,6 +44,8 @@
 		EE26EFDF1C5B516B0063C6A6 /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = EE26EFCD1C5B516B0063C6A6 /* UIImageView+HighlightedWebCache.m */; };
 		EE26EFE01C5B516B0063C6A6 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = EE26EFCF1C5B516B0063C6A6 /* UIImageView+WebCache.m */; };
 		EE26EFE11C5B516B0063C6A6 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = EE26EFD11C5B516B0063C6A6 /* UIView+WebCacheOperation.m */; };
+		EE29DEC21C5CE4D10024023C /* YUComposeToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE29DEC11C5CE4D10024023C /* YUComposeToolbar.swift */; };
+		EE29DEC41C5CEEB50024023C /* YUComposePhotosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE29DEC31C5CEEB50024023C /* YUComposePhotosView.swift */; };
 		EE29EEA41C4B643200CA667F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE29EEA31C4B643200CA667F /* AppDelegate.swift */; };
 		EE29EEAB1C4B643200CA667F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE29EEAA1C4B643200CA667F /* Assets.xcassets */; };
 		EE29EEAE1C4B643200CA667F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE29EEAC1C4B643200CA667F /* LaunchScreen.storyboard */; };
@@ -287,6 +289,8 @@
 		EE26EFCF1C5B516B0063C6A6 /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		EE26EFD01C5B516B0063C6A6 /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		EE26EFD11C5B516B0063C6A6 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
+		EE29DEC11C5CE4D10024023C /* YUComposeToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YUComposeToolbar.swift; sourceTree = "<group>"; };
+		EE29DEC31C5CEEB50024023C /* YUComposePhotosView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YUComposePhotosView.swift; sourceTree = "<group>"; };
 		EE29EEA01C4B643200CA667F /* Yu3Weibo-Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Yu3Weibo-Swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE29EEA31C4B643200CA667F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EE29EEAA1C4B643200CA667F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -429,6 +433,50 @@
 			path = SDWebImage;
 			sourceTree = "<group>";
 		};
+		EE26EFE21C5B57780063C6A6 /* OC库 */ = {
+			isa = PBXGroup;
+			children = (
+				EE26EF951C5B43060063C6A6 /* YueWeibo-Swift-Bridging-Header.h */,
+				EE26EFB01C5B516B0063C6A6 /* SDWebImage */,
+				EE26EF961C5B46890063C6A6 /* MJPhotoBrowser */,
+				EE26EF7F1C5B41CE0063C6A6 /* MBProgressHUD */,
+			);
+			name = "OC库";
+			sourceTree = "<group>";
+		};
+		EE29DEB31C5CE2520024023C /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				EE29EED71C4B676D00CA667F /* YUTabBar.swift */,
+				EE29EEDA1C4B69D700CA667F /* YUTabBarButton.swift */,
+				EE29EEDC1C4B70A200CA667F /* YUBadgeButton.swift */,
+			);
+			name = Base;
+			sourceTree = "<group>";
+		};
+		EE29DEBF1C5CE26D0024023C /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				EE35A1E91C4D076300B721BA /* YUTitleButton.swift */,
+				EE19E5BF1C50B2B000A40B2E /* YUStatusCell.swift */,
+				EE2200371C5257950021FFE1 /* YUStatusTopView.swift */,
+				EE2AAA6B1C54773C00EEE796 /* YUPhotoListView.swift */,
+				EE26EFAE1C5B48E60063C6A6 /* YUPhotoView.swift */,
+				EE22002B1C5201780021FFE1 /* YUStatusToolbar.swift */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
+		EE29DEC01C5CE2B50024023C /* Compose */ = {
+			isa = PBXGroup;
+			children = (
+				EE26EF701C5B2B0F0063C6A6 /* YUTextView.swift */,
+				EE29DEC11C5CE4D10024023C /* YUComposeToolbar.swift */,
+				EE29DEC31C5CEEB50024023C /* YUComposePhotosView.swift */,
+			);
+			name = Compose;
+			sourceTree = "<group>";
+		};
 		EE29EE971C4B643200CA667F = {
 			isa = PBXGroup;
 			children = (
@@ -495,14 +543,11 @@
 		EE29EED31C4B64E300CA667F /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				EE26EFB01C5B516B0063C6A6 /* SDWebImage */,
-				EE26EF961C5B46890063C6A6 /* MJPhotoBrowser */,
-				EE26EF7F1C5B41CE0063C6A6 /* MBProgressHUD */,
+				EE26EFE21C5B57780063C6A6 /* OC库 */,
 				EE6056DF1C4E7D500089A04C /* Tool.swift */,
 				EE29EEA31C4B643200CA667F /* AppDelegate.swift */,
 				EEE780841C4F7DF400C4D905 /* Extensions.swift */,
 				EE61C51A1C58B8AB00ABD45A /* Constants.swift */,
-				EE26EF951C5B43060063C6A6 /* YueWeibo-Swift-Bridging-Header.h */,
 			);
 			name = Other;
 			sourceTree = "<group>";
@@ -510,16 +555,9 @@
 		EE29EED91C4B69B600CA667F /* View */ = {
 			isa = PBXGroup;
 			children = (
-				EE29EED71C4B676D00CA667F /* YUTabBar.swift */,
-				EE29EEDA1C4B69D700CA667F /* YUTabBarButton.swift */,
-				EE29EEDC1C4B70A200CA667F /* YUBadgeButton.swift */,
-				EE35A1E91C4D076300B721BA /* YUTitleButton.swift */,
-				EE19E5BF1C50B2B000A40B2E /* YUStatusCell.swift */,
-				EE2200371C5257950021FFE1 /* YUStatusTopView.swift */,
-				EE2AAA6B1C54773C00EEE796 /* YUPhotoListView.swift */,
-				EE26EFAE1C5B48E60063C6A6 /* YUPhotoView.swift */,
-				EE22002B1C5201780021FFE1 /* YUStatusToolbar.swift */,
-				EE26EF701C5B2B0F0063C6A6 /* YUTextView.swift */,
+				EE29DEC01C5CE2B50024023C /* Compose */,
+				EE29DEBF1C5CE26D0024023C /* Home */,
+				EE29DEB31C5CE2520024023C /* Base */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -842,8 +880,10 @@
 				EE26EFAF1C5B48E60063C6A6 /* YUPhotoView.swift in Sources */,
 				EE26EFD61C5B516B0063C6A6 /* SDWebImageDecoder.m in Sources */,
 				EE2200381C5257950021FFE1 /* YUStatusTopView.swift in Sources */,
+				EE29DEC41C5CEEB50024023C /* YUComposePhotosView.swift in Sources */,
 				EE26EFD91C5B516B0063C6A6 /* SDWebImageManager.m in Sources */,
 				EE19E5C01C50B2B000A40B2E /* YUStatusCell.swift in Sources */,
+				EE29DEC21C5CE4D10024023C /* YUComposeToolbar.swift in Sources */,
 				EE26EFAB1C5B46890063C6A6 /* MJPhotoToolbar.m in Sources */,
 				EE26EFDF1C5B516B0063C6A6 /* UIImageView+HighlightedWebCache.m in Sources */,
 				EE26EFDC1C5B516B0063C6A6 /* UIImage+GIF.m in Sources */,

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Alamofire
 import Kingfisher
 import ZLSwiftRefresh
 
@@ -37,7 +36,8 @@ class YUHomeViewController: UITableViewController {
         let urlStr = "https://api.weibo.com/2/users/show.json"
         params["uid"] = YUAccountTool.account()?.uid
         var result:String? = nil
-        Alamofire.request(.GET, urlStr, parameters: params, encoding: .URL, headers: nil).responseJSON { (response) -> Void in
+        
+        YUHttpTool.getWithURL(urlStr, params: params) { (response) -> Void in
             if response.result.error != nil {
                 print("请求失败：\(response.result.error)")
             } else {
@@ -67,7 +67,7 @@ class YUHomeViewController: UITableViewController {
             params["since_id"] = statusFrame.status!.idstr;
         }
         
-        Alamofire.request(.GET, urlStr, parameters: params, encoding: .URL, headers: nil).responseJSON { (response) -> Void in
+        YUHttpTool.getWithURL(urlStr, params: params) { (response) -> Void in
             if response.result.error != nil {
                 print("请求失败：\(response.result.error)")
             } else {
@@ -88,7 +88,6 @@ class YUHomeViewController: UITableViewController {
                 // 显示最新微博的数量(给用户一些友善的提示)
                 self.showNewStatusCount(statusFrames.count)
             }
-            
         }
     }
     
@@ -140,7 +139,7 @@ class YUHomeViewController: UITableViewController {
             params["max_id"] = maxId
         }
         let urlStr = "https://api.weibo.com/2/statuses/home_timeline.json"
-        Alamofire.request(.GET, urlStr, parameters: params, encoding: .URL, headers: nil).responseJSON { (response) -> Void in
+        YUHttpTool.getWithURL(urlStr, params: params) { (response) -> Void in
             if response.result.error != nil {
                 print("请求失败：\(response.result.error)")
             } else {
@@ -155,7 +154,6 @@ class YUHomeViewController: UITableViewController {
                 self.tableView.doneRefresh()
                 self.tableView.reloadData()
             }
-            
         }
     }
     
