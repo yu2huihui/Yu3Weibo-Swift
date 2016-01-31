@@ -8,25 +8,35 @@
 
 import UIKit
 import Kingfisher
-import ZLSwiftRefresh
 
-class YUHomeViewController: UITableViewController {
+class YUHomeViewController: UITableViewController, RefreshDelegate {
     let titleButton = YUTitleButton()
     var statusFrames = [YUStatusFrame]()
+    weak var footer:MJRefreshFooter!
+    weak var header:MJRefreshHeader!
+    
+    
+    func refreshData(tag: Int) {
+        if tag == 0 {
+            self.header.beginRefreshing()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setNavigationBar()
-        self.tableView.nowRefresh { () -> Void in
-            self.loadNewData()
-        }
-        //上拉刷新
-        self.tableView.toRefreshAction { () -> Void in
-            self.loadNewData()
-        }
-        self.tableView.toLoadMoreAction { () -> Void in
-            self.loadMoreData()
-        }
+        self.setRefreshView()
+    }
+    
+    func setRefreshView() {
+        let header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: Selector("loadNewData"))
+        header.beginRefreshing()
+        self.tableView.addSubview(header)
+        self.header = header
         
+        let footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: Selector("loadMoreData"))
+        self.tableView.addSubview(footer)
+        self.footer = footer
     }
     
     /** 发送请求获得用户信息 */
@@ -83,7 +93,7 @@ class YUHomeViewController: UITableViewController {
                 // 插入数据到前面
                 self.statusFrames.insertContentsOf(statusFrames, at: 0)
                 // 结束刷新状态
-                self.tableView.doneRefresh()
+                self.header.endRefreshing()
                 self.tableView.reloadData()
                 // 显示最新微博的数量(给用户一些友善的提示)
                 self.showNewStatusCount(statusFrames.count)
@@ -151,7 +161,7 @@ class YUHomeViewController: UITableViewController {
                     statusFrame.status = YUStatus(dic: statusDic as! NSDictionary)
                     self.statusFrames.append(statusFrame)
                 }
-                self.tableView.doneRefresh()
+                self.footer.endRefreshing()
                 self.tableView.reloadData()
             }
         }

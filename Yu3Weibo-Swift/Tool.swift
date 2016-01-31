@@ -26,7 +26,7 @@ struct YUFormData {
 struct YUHttpTool {
     /** 发送一条post请求并上传文件 */
     static func uploadWithPOST(urlStr:String, params:[String : String], formDataArray:[YUFormData], completionHandler: Response<AnyObject, NSError> -> Void) {
-        Alamofire.upload(.POST, urlStr, headers: params, multipartFormData: { (multipartFormData) -> Void in
+        Alamofire.upload(.POST, urlStr, multipartFormData: { (multipartFormData) -> Void in
             let access_token = params["access_token"]!
             multipartFormData.appendBodyPart(data: access_token.dataUsingEncoding(NSUTF8StringEncoding)!, name: "access_token")
             let status = params["status"]!

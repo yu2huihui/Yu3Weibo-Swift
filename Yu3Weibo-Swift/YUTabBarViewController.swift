@@ -8,13 +8,23 @@
 
 import UIKit
 
+@objc protocol RefreshDelegate : NSObjectProtocol {
+    optional func refreshData(tag:Int)
+}
+
 class YUTabBarViewController: UITabBarController, YUTabBarDelegate {
     weak var myTabBar:YUTabBar!
+    weak var refreshDelegate:RefreshDelegate?
 
     func tabBarDidSelected(tabBar:YUTabBar, from:Int, to:Int) {
         self.selectedIndex = to
+        if from == to { //首页被点，需要刷新数据
+            if ((refreshDelegate?.respondsToSelector(Selector("refreshData:"))) != nil) {
+                refreshDelegate!.refreshData!(to)
+            }
+        }
     }
-    
+
     func tabBarDidClickedPlusButton(tabBar: YUTabBar) {
         self.presentViewController(YUNavigationController(rootViewController: YUComposeViewController()), animated: true, completion: nil)
     }
@@ -64,5 +74,8 @@ class YUTabBarViewController: UITabBarController, YUTabBarDelegate {
         childVc.tabBarItem.selectedImage = selectImage
         self.addChildViewController(YUNavigationController(rootViewController: childVc))
         self.myTabBar.addTabBarButtonWithItem(childVc.tabBarItem)
+        if ((childVc as? RefreshDelegate) != nil) {
+            self.refreshDelegate = childVc as? RefreshDelegate
+        }
     }
 }
