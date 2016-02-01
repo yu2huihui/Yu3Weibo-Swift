@@ -9,18 +9,11 @@
 import UIKit
 import Kingfisher
 
-class YUHomeViewController: UITableViewController, RefreshDelegate {
+class YUHomeViewController: UITableViewController {
     let titleButton = YUTitleButton()
     var statusFrames = [YUStatusFrame]()
     weak var footer:MJRefreshFooter!
     weak var header:MJRefreshHeader!
-    
-    
-    func refreshData(tag: Int) {
-        if tag == 0 {
-            self.header.beginRefreshing()
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,6 +53,7 @@ class YUHomeViewController: UITableViewController, RefreshDelegate {
     
     /** 发送请求加载新的微博数据 */
     func loadNewData() {
+        self.tabBarItem.badgeValue = nil
         // 装配参数
         let param = HomeStatusesParam()
         param.count = 10
@@ -86,6 +80,8 @@ class YUHomeViewController: UITableViewController, RefreshDelegate {
                 self.showNewStatusCount(statusFrames.count)
             } else {
                 print("请求失败：\(error)")
+                // 结束刷新状态
+                self.header.endRefreshing()
             }
         }
     }
@@ -145,6 +141,7 @@ class YUHomeViewController: UITableViewController, RefreshDelegate {
                 self.tableView.reloadData()
             } else {
                 print("请求失败：\(error)")
+                self.header.endRefreshing()
             }
         }
     }

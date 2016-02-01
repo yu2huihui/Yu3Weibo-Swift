@@ -12,20 +12,22 @@ class YUBadgeButton: UIButton {
     var badgeValue:String? {
         willSet {
             if newValue != nil {
-                self.hidden = false;
-                self.setTitle(newValue, forState: .Normal)
-                // 设置frame
-                var frame = self.frame
-                let badgeH = self.currentBackgroundImage!.size.height
-                var badgeW = self.currentBackgroundImage!.size.width
-                if (NSString(string: newValue!).length > 1) {
-                    // 文字的尺寸
-                    let badgeSize = NSString(string: newValue!).sizeWithAttributes(["NSFontAttributeName":self.titleLabel!.font])
-                    badgeW = badgeSize.width + 10;
+                if Int(newValue!) > 0 {
+                    self.hidden = false;
+                    self.setTitle(newValue, forState: .Normal)
+                    // 设置frame
+                    var frame = self.frame
+                    let badgeH = self.currentBackgroundImage!.size.height
+                    var badgeW = self.currentBackgroundImage!.size.width
+                    if (NSString(string: newValue!).length > 1) {
+                        // 文字的尺寸
+                        let badgeSize = NSString(string: newValue!).sizeWithAttributes(["NSFontAttributeName":self.titleLabel!.font])
+                        badgeW = badgeSize.width + 10;
+                    }
+                    frame.size.width = badgeW
+                    frame.size.height = badgeH
+                    self.frame = frame
                 }
-                frame.size.width = badgeW
-                frame.size.height = badgeH
-                self.frame = frame
             } else {
                 self.hidden = true
             }

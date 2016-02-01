@@ -17,7 +17,7 @@ class BaseParam {
     }
 }
 
-class UserInfoParam : BaseParam {
+class UserInfoParam: BaseParam {
     /**
     *  需要查询的用户ID。
     */
@@ -29,7 +29,86 @@ class UserInfoParam : BaseParam {
     var screen_name:String = ""
 }
 
+class UserUnreadCountParam: BaseParam {
+    /**
+    *  需要查询的用户ID。
+    */
+    var uid:Int = 0
+    /**
+    *  未读数版本。0：原版未读数，1：新版未读数。默认为0。
+    */
+    var unread_message:Int = 1
+}
+
+class UserUnreadCountResult {
+    /** 新微博未读数 */
+    var status:Int?
+    /** 新粉丝数 */
+    var follower:Int?
+    /** 新评论数 */
+    var cmt:Int?
+    /** 新私信数 */
+    var dm:Int?
+    /** 新提及我的微博数 */
+    var mention_status:Int?
+    /** 新提及我的评论数 */
+    var mention_cmt:Int?
+    /** 微群消息未读数 */
+    var group:Int?
+    /** 私有微群消息未读数 */
+    var private_group:Int?
+    /** 新通知未读数 */
+    var notice:Int?
+    /** 新邀请未读数 */
+    var invite:Int?
+    /** 新勋章数 */
+    var badge:Int?
+    /** 相册消息未读数 */
+    var photo:Int?
+    /** {{{3}}} */
+    var msgbox:Int?
+    
+    func messageCount() -> Int {
+        return self.cmt! + self.mention_cmt! + self.mention_status! + self.dm!
+    }
+    
+    func totalCount() -> Int {
+        return self.messageCount() + self.status! + self.follower!
+    }
+    
+    init(dic:NSDictionary) {
+        status = dic["status"] as? Int
+        follower = dic["follower"] as? Int
+        cmt = dic["cmt"] as? Int
+        dm = dic["dm"] as? Int
+        mention_status = dic["mention_status"] as? Int
+        mention_cmt = dic["mention_cmt"] as? Int
+        group = dic["group"] as? Int
+        private_group = dic["private_group"] as? Int
+        notice = dic["notice"] as? Int
+        invite = dic["invite"] as? Int
+        badge = dic["badge"] as? Int
+        photo = dic["photo"] as? Int
+        msgbox = dic["msgbox"] as? Int
+    }
+}
+
 struct YUUserInfoTool {
+    static func userUnreadCountWithParam(param:UserUnreadCountParam, completionHandler: (UserUnreadCountResult?, NSError?) -> Void) {
+        var params = ["access_token": param.access_token] as Dictionary<String,AnyObject>
+        params["uid"] = param.uid
+        params["unread_message"] = param.unread_message
+        YUHttpTool.getWithURL("https://rm.api.weibo.com/2/remind/unread_count.json", params: params) { (response) -> Void in
+            if response.result.error == nil {
+                let dic = response.result.value as! NSDictionary
+                let result = UserUnreadCountResult(dic: dic)
+                completionHandler(result, nil)
+            } else {
+                completionHandler(nil, response.result.error)
+            }
+        }
+    }
+    
     static func userInfoWithParam(param:UserInfoParam, completionHandler: (YUUser?, NSError?) -> Void) {
         var params = ["access_token": param.access_token] as Dictionary<String,AnyObject>
         if param.screen_name == "" {
@@ -49,7 +128,7 @@ struct YUUserInfoTool {
     }
 }
 
-class HomeStatusesParam : BaseParam {
+class HomeStatusesParam: BaseParam {
     /**
     *  若指定此参数，则返回ID比since_id大的微博（即比since_id时间晚的微博），默认为0。
     */
@@ -66,7 +145,7 @@ class HomeStatusesParam : BaseParam {
     var count:Int = 20
 }
 
-class SendStatusParam : BaseParam {
+class SendStatusParam: BaseParam {
     /** 要发布的微博文本内容，必须做URLencode，内容不超过140个汉字。 */
     var status = ""
     /** 要发送的图片 */
@@ -111,7 +190,6 @@ struct YUStatusTool {
             })
         }
     }
-    
     
     /** 获取首页微博信息 */
     static func homeStatusesWithParam(param: HomeStatusesParam, completionHandler: ([YUStatus]?, NSError?) -> Void) {

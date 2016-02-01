@@ -8,20 +8,18 @@
 
 import UIKit
 
-@objc protocol RefreshDelegate : NSObjectProtocol {
-    optional func refreshData(tag:Int)
-}
 
 class YUTabBarViewController: UITabBarController, YUTabBarDelegate {
     weak var myTabBar:YUTabBar!
-    weak var refreshDelegate:RefreshDelegate?
+    let home = YUHomeViewController()
+    let message = YUMessageViewController()
+    let discover = YUDiscoverViewController()
+    let me = YUMeViewController()
 
     func tabBarDidSelected(tabBar:YUTabBar, from:Int, to:Int) {
         self.selectedIndex = to
-        if from == to { //首页被点，需要刷新数据
-            if ((refreshDelegate?.respondsToSelector(Selector("refreshData:"))) != nil) {
-                refreshDelegate!.refreshData!(to)
-            }
+        if from == to && to == 0 { //首页被点，需要刷新数据
+            home.header.beginRefreshing()
         }
     }
 
@@ -42,6 +40,34 @@ class YUTabBarViewController: UITabBarController, YUTabBarDelegate {
         super.viewDidLoad()
         self.setupTabBar()
         self.setupAllChildViewControllers()
+        // 定时检查未读数
+        let timer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: Selector("checkUnreadCount"), userInfo: nil, repeats: true)
+        NSRunLoop.mainRunLoop().addTimer(timer, forMode: NSRunLoopCommonModes)
+    }
+    
+    func checkUnreadCount() {
+        let param = UserUnreadCountParam()
+        param.uid = Int(YUAccountTool.account()!.uid as! String)!
+        YUUserInfoTool.userUnreadCountWithParam(param) { (result, error) -> Void in
+            if error == nil {
+                self.home.tabBarItem.badgeValue = "\(result!.status!)"
+                self.message.tabBarItem.badgeValue = "\(result!.messageCount())"
+                // 3.3.我
+                self.me.tabBarItem.badgeValue = "\(result!.follower!)"
+                // 3.4.设置应用图标右上角的数字
+                let version = Float(UIDevice.currentDevice().systemVersion)
+                if version >= 8.0 {
+                    // 在IOS8中要想设置applicationIconBadgeNumber，需要用户的授权，在IOS8中，需要加上下面的代码：
+                    let settings = UIUserNotificationSettings(forTypes: .Badge, categories: nil)
+                    UIApplication.sharedApplication().registerUserNotificationSettings(settings)
+                    // 注册消息推送
+                    //UIApplication.sharedApplication().registerForRemoteNotifications()
+                }
+                UIApplication.sharedApplication().applicationIconBadgeNumber = result!.totalCount()
+            } else {
+                print("发送请求失败\(error)")
+            }
+        }
     }
     
     func setupTabBar() {
@@ -53,17 +79,10 @@ class YUTabBarViewController: UITabBarController, YUTabBarDelegate {
     }
     
     func setupAllChildViewControllers() {
-        let home = YUHomeViewController()
         self.setupChildViewController(home, title: "首页", imageName: "tabbar_home", selectedImage: "tabbar_home_selected")
-        //home.tabBarItem.badgeValue = "99"
-        let message = YUMessageViewController()
         self.setupChildViewController(message, title: "消息", imageName: "tabbar_message_center", selectedImage: "tabbar_message_center_selected")
-        let discover = YUDiscoverViewController()
         self.setupChildViewController(discover, title: "发现", imageName: "tabbar_discover", selectedImage: "tabbar_discover_selected")
-        let me = YUMeViewController()
         self.setupChildViewController(me, title: "我", imageName: "tabbar_profile", selectedImage: "tabbar_profile_selected")
-        me.tabBarItem.badgeValue = "3"
-        //message.tabBarItem.badgeValue = "23"
     }
    
     func setupChildViewController(childVc:UIViewController, title:String, imageName:String, selectedImage:String) {
@@ -74,8 +93,5 @@ class YUTabBarViewController: UITabBarController, YUTabBarDelegate {
         childVc.tabBarItem.selectedImage = selectImage
         self.addChildViewController(YUNavigationController(rootViewController: childVc))
         self.myTabBar.addTabBarButtonWithItem(childVc.tabBarItem)
-        if ((childVc as? RefreshDelegate) != nil) {
-            self.refreshDelegate = childVc as? RefreshDelegate
-        }
     }
 }
