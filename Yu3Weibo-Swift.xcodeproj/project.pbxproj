@@ -79,10 +79,11 @@
 		EE2AAA6C1C54773C00EEE796 /* YUPhotoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2AAA6B1C54773C00EEE796 /* YUPhotoListView.swift */; };
 		EE35A1E71C4CF07500B721BA /* YUNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE35A1E61C4CF07500B721BA /* YUNavigationController.swift */; };
 		EE35A1EA1C4D076300B721BA /* YUTitleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE35A1E91C4D076300B721BA /* YUTitleButton.swift */; };
+		EE375B141C5F49DC00A89429 /* ServiceTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE375B131C5F49DC00A89429 /* ServiceTool.swift */; };
 		EE6056881C4E6CF60089A04C /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEF0B35F1C4E6C93000BD306 /* Alamofire.framework */; };
 		EE6056891C4E6CF60089A04C /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EEF0B35F1C4E6C93000BD306 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EE6056DE1C4E77020089A04C /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6056DD1C4E77020089A04C /* DataModel.swift */; };
-		EE6056E01C4E7D500089A04C /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6056DF1C4E7D500089A04C /* Tool.swift */; };
+		EE6056E01C4E7D500089A04C /* HttpTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6056DF1C4E7D500089A04C /* HttpTool.swift */; };
 		EE61C51B1C58B8AB00ABD45A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE61C51A1C58B8AB00ABD45A /* Constants.swift */; };
 		EEE780801C4F7BA900C4D905 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEE780791C4F7B9400C4D905 /* Kingfisher.framework */; };
 		EEE780811C4F7BA900C4D905 /* Kingfisher.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EEE780791C4F7B9400C4D905 /* Kingfisher.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -345,8 +346,9 @@
 		EE2AAA6B1C54773C00EEE796 /* YUPhotoListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YUPhotoListView.swift; sourceTree = "<group>"; };
 		EE35A1E61C4CF07500B721BA /* YUNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YUNavigationController.swift; sourceTree = "<group>"; };
 		EE35A1E91C4D076300B721BA /* YUTitleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YUTitleButton.swift; sourceTree = "<group>"; };
+		EE375B131C5F49DC00A89429 /* ServiceTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceTool.swift; sourceTree = "<group>"; };
 		EE6056DD1C4E77020089A04C /* DataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
-		EE6056DF1C4E7D500089A04C /* Tool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tool.swift; sourceTree = "<group>"; };
+		EE6056DF1C4E7D500089A04C /* HttpTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpTool.swift; sourceTree = "<group>"; };
 		EE61C51A1C58B8AB00ABD45A /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		EEE7806E1C4F7B9300C4D905 /* Kingfisher.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Kingfisher.xcodeproj; path = "Kingfisher-master/Kingfisher.xcodeproj"; sourceTree = "<group>"; };
 		EEE780841C4F7DF400C4D905 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -659,7 +661,8 @@
 			isa = PBXGroup;
 			children = (
 				EE26EFE21C5B57780063C6A6 /* OC库 */,
-				EE6056DF1C4E7D500089A04C /* Tool.swift */,
+				EE375B131C5F49DC00A89429 /* ServiceTool.swift */,
+				EE6056DF1C4E7D500089A04C /* HttpTool.swift */,
 				EE29EEA31C4B643200CA667F /* AppDelegate.swift */,
 				EEE780841C4F7DF400C4D905 /* Extensions.swift */,
 				EE61C51A1C58B8AB00ABD45A /* Constants.swift */,
@@ -999,7 +1002,7 @@
 				EE26EFD81C5B516B0063C6A6 /* SDWebImageDownloaderOperation.m in Sources */,
 				EE28A3401C5DAD70007550E2 /* MJRefreshAutoFooter.m in Sources */,
 				EE28A3471C5DAD70007550E2 /* MJRefreshAutoStateFooter.m in Sources */,
-				EE6056E01C4E7D500089A04C /* Tool.swift in Sources */,
+				EE6056E01C4E7D500089A04C /* HttpTool.swift in Sources */,
 				EE29EEA41C4B643200CA667F /* AppDelegate.swift in Sources */,
 				EE26EFDB1C5B516B0063C6A6 /* UIButton+WebCache.m in Sources */,
 				EE28A3441C5DAD70007550E2 /* MJRefreshHeader.m in Sources */,
@@ -1016,6 +1019,7 @@
 				EE28A3461C5DAD70007550E2 /* MJRefreshAutoNormalFooter.m in Sources */,
 				EE26EFAC1C5B46890063C6A6 /* MJPhotoView.m in Sources */,
 				EE26EFDA1C5B516B0063C6A6 /* SDWebImagePrefetcher.m in Sources */,
+				EE375B141C5F49DC00A89429 /* ServiceTool.swift in Sources */,
 				EE26EFDD1C5B516B0063C6A6 /* UIImage+MultiFormat.m in Sources */,
 				EE28A34B1C5DAD70007550E2 /* MJRefreshGifHeader.m in Sources */,
 				EE26EFD51C5B516B0063C6A6 /* SDWebImageCompat.m in Sources */,

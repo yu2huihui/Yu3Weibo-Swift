@@ -40,63 +40,52 @@ class YUHomeViewController: UITableViewController, RefreshDelegate {
     }
     
     /** 发送请求获得用户信息 */
-    func getUserName() -> String? {
-        let access_token = YUAccountTool.account()?.access_token
-        var params = ["access_token": access_token!] as Dictionary<String,AnyObject>
-        let urlStr = "https://api.weibo.com/2/users/show.json"
-        params["uid"] = YUAccountTool.account()?.uid
-        var result:String? = nil
-        
-        YUHttpTool.getWithURL(urlStr, params: params) { (response) -> Void in
-            if response.result.error != nil {
-                print("请求失败：\(response.result.error)")
-            } else {
-                let userDic = response.result.value as! NSDictionary
-                let user = YUUser(dic: userDic)
-                // 设置标题文字
-                self.titleButton.setTitle(user.name, forState: .Normal)
+    func setUserName() {
+        let param = UserInfoParam()
+        param.uid = Int(YUAccountTool.account()!.uid as! String)!
+        YUUserInfoTool.userInfoWithParam(param) { (user, error) -> Void in
+            if error == nil {
+                self.titleButton.setTitle(user!.name!, forState: .Normal)
                 // 保存昵称
                 let account = YUAccountTool.account()
-                account!.name = user.name;
+                account!.name = user!.name;
                 YUAccountTool.saveAccount(account!)
-                result = user.name
+            } else {
+                print("请求失败：\(error)")
+                MBProgressHUD.showError("获取用户信息失败")
+                self.titleButton.setTitle("首页", forState: .Normal)
             }
         }
-        return result
     }
     
     /** 发送请求加载新的微博数据 */
     func loadNewData() {
-        let access_token = YUAccountTool.account()?.access_token
-        var params = ["access_token": access_token!] as Dictionary<String,AnyObject>
-        let urlStr = "https://api.weibo.com/2/statuses/home_timeline.json"
-        params["count"] = 10
-        if (self.statusFrames.count > 0) {
-            let statusFrame = self.statusFrames[0];
-            // 加载ID比since_id大的微博
-            params["since_id"] = statusFrame.status!.idstr;
+        // 装配参数
+        let param = HomeStatusesParam()
+        param.count = 10
+        if self.statusFrames.count > 0 {
+            let statusFrame = self.statusFrames[0]
+            param.since_id = Int(statusFrame.status!.idstr!)!
         }
-        
-        YUHttpTool.getWithURL(urlStr, params: params) { (response) -> Void in
-            if response.result.error != nil {
-                print("请求失败：\(response.result.error)")
-            } else {
-                let status = response.result.value as? NSDictionary
-                let statusAry = status!["statuses"] as? NSArray
+        // 获取微博信息
+        YUStatusTool.homeStatusesWithParam(param) { (statuses, error) -> Void in
+            if error == nil {
                 var statusFrames = [YUStatusFrame]()
-                for statusDic in statusAry! {
-                    //将字典封装成模型
+                for status in statuses! {
                     let statusFrame = YUStatusFrame()
-                    statusFrame.status = YUStatus(dic: statusDic as! NSDictionary)
+                    statusFrame.status = status
                     statusFrames.append(statusFrame)
                 }
                 // 插入数据到前面
                 self.statusFrames.insertContentsOf(statusFrames, at: 0)
                 // 结束刷新状态
                 self.header.endRefreshing()
+                // 刷新数据
                 self.tableView.reloadData()
                 // 显示最新微博的数量(给用户一些友善的提示)
                 self.showNewStatusCount(statusFrames.count)
+            } else {
+                print("请求失败：\(error)")
             }
         }
     }
@@ -139,30 +128,23 @@ class YUHomeViewController: UITableViewController, RefreshDelegate {
     
     /** 发送请求加载更多的微博数据 */
     func loadMoreData() {
-        let access_token = YUAccountTool.account()?.access_token
-        var params = ["access_token": access_token!] as Dictionary<String,AnyObject>
-        params["count"] = 5
-        if (self.statusFrames.count > 0) {
+        let param = HomeStatusesParam()
+        param.count = 5
+        if self.statusFrames.count > 0 {
             let statusFrame = self.statusFrames.last
-            // 加载ID <= max_id的微博
-            let maxId = Int(statusFrame!.status!.idstr!)! - 1
-            params["max_id"] = maxId
+            param.max_id = Int(statusFrame!.status!.idstr!)! - 1
         }
-        let urlStr = "https://api.weibo.com/2/statuses/home_timeline.json"
-        YUHttpTool.getWithURL(urlStr, params: params) { (response) -> Void in
-            if response.result.error != nil {
-                print("请求失败：\(response.result.error)")
-            } else {
-                let status = response.result.value as? NSDictionary
-                let statusAry = status!["statuses"] as? NSArray
-                for statusDic in statusAry! {
-                    //将字典封装成模型
+        YUStatusTool.homeStatusesWithParam(param) { (statuses, error) -> Void in
+            if error == nil {
+                for status in statuses! {
                     let statusFrame = YUStatusFrame()
-                    statusFrame.status = YUStatus(dic: statusDic as! NSDictionary)
+                    statusFrame.status = status
                     self.statusFrames.append(statusFrame)
                 }
                 self.footer.endRefreshing()
                 self.tableView.reloadData()
+            } else {
+                print("请求失败：\(error)")
             }
         }
     }
@@ -179,12 +161,7 @@ class YUHomeViewController: UITableViewController, RefreshDelegate {
             let name = YUAccountTool.account()!.name as! String
             titleButton.setTitle(name, forState: .Normal)
         } else {
-            let name = self.getUserName()
-            if name != nil {
-                titleButton.setTitle(name, forState: .Normal)
-            } else {
-                titleButton.setTitle("首页", forState: .Normal)
-            }
+            self.setUserName()
         }
         //    titleButton.tag = TitleButtonDownTag;
         titleButton.addTarget(self, action: Selector("titleClick:"), forControlEvents: .TouchUpInside)

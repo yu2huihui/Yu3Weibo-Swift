@@ -135,58 +135,20 @@ class YUComposeViewController: UIViewController, UITextViewDelegate, YUComposeTo
     }
     
     func send() {
-        if (self.photosView.totalImages().count != 0) { // 有图片
-            self.sendWithImage()
-        } else { // 没有图片
-            self.sendWithoutImage()
+        let param = SendStatusParam()
+        param.status = textView.text
+        if photosView.totalImages().count > 0 { // 有图片
+            param.pictures = photosView.totalImages()
+        }
+        YUStatusTool.sendStatusWithParam(param) { (status, error) -> Void in
+            if error == nil {
+                print("上传成功：\(status)")
+                MBProgressHUD.showSuccess("发送成功")
+            } else {
+                print("请求失败：\(error)")
+                MBProgressHUD.showError("发送失败")
+            }
         }
         self.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    func sendWithImage() {
-        let params = [
-            "status": "\(textView.text)",
-            "access_token" : "\(YUAccountTool.account()!.access_token!)"
-        ]
-        let urlStr = "https://upload.api.weibo.com/2/statuses/upload.json"
-        // 封装文件参数
-        var formDataArray = [YUFormData]()
-        let images = self.photosView.totalImages()
-        for image in images {
-            var formData = YUFormData()
-            formData.data = UIImageJPEGRepresentation(image, 0.5)!;
-            formData.name = "pic"
-            formData.mimeType = "image/jpeg"
-            formDataArray.append(formData)
-        }
-        
-        YUHttpTool.uploadWithPOST(urlStr, params: params, formDataArray: formDataArray) { (response) -> Void in
-            let result = response.result
-            if result.error != nil {
-                print("请求失败：\(result.error)")
-                MBProgressHUD.showError("发送失败")
-            } else {
-                print("上传成功：\(result.value)")
-                MBProgressHUD.showSuccess("发送成功")
-            }
-        }
-    }
-    
-    func sendWithoutImage() {
-        let params = [
-            "status": "\(textView.text)",
-            "access_token" : "\(YUAccountTool.account()!.access_token!)"
-        ]
-        let urlStr = "https://api.weibo.com/2/statuses/update.json"
-        YUHttpTool.postWithURL(urlStr, params: params) { (response) -> Void in
-            let result = response.result
-            if result.error != nil {
-                print("请求失败：\(result.error)")
-                MBProgressHUD.showError("发送失败")
-            } else {
-                print("发送成功：\(result.value)")
-                MBProgressHUD.showSuccess("发送成功")
-            }
-        }
     }
 }
