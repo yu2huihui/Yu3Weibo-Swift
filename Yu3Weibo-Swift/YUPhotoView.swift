@@ -22,6 +22,7 @@ class YUPhotoView: UIImageView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.addSubview(gifView)
+
     }
 
     required init?(coder aDecoder: NSCoder) {

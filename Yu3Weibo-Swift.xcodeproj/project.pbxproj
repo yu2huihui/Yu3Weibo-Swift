@@ -61,6 +61,12 @@
 		EE28A3501C5DAD70007550E2 /* UIScrollView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = EE28A33B1C5DAD70007550E2 /* UIScrollView+MJExtension.m */; };
 		EE28A3511C5DAD70007550E2 /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = EE28A33D1C5DAD70007550E2 /* UIScrollView+MJRefresh.m */; };
 		EE28A3521C5DAD70007550E2 /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = EE28A33F1C5DAD70007550E2 /* UIView+MJExtension.m */; };
+		EE298DE01C67708C007AF1C8 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = EE298DD51C67708C007AF1C8 /* FMDatabase.m */; };
+		EE298DE11C67708C007AF1C8 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = EE298DD71C67708C007AF1C8 /* FMDatabaseAdditions.m */; };
+		EE298DE21C67708C007AF1C8 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = EE298DD91C67708C007AF1C8 /* FMDatabasePool.m */; };
+		EE298DE31C67708C007AF1C8 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = EE298DDB1C67708C007AF1C8 /* FMDatabaseQueue.m */; };
+		EE298DE41C67708C007AF1C8 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = EE298DDE1C67708C007AF1C8 /* FMResultSet.m */; };
+		EE298DF31C6781DA007AF1C8 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EE298DF21C6781DA007AF1C8 /* libsqlite3.tbd */; };
 		EE29DEC21C5CE4D10024023C /* YUComposeToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE29DEC11C5CE4D10024023C /* YUComposeToolbar.swift */; };
 		EE29DEC41C5CEEB50024023C /* YUComposePhotosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE29DEC31C5CEEB50024023C /* YUComposePhotosView.swift */; };
 		EE29EEA41C4B643200CA667F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE29EEA31C4B643200CA667F /* AppDelegate.swift */; };
@@ -322,6 +328,18 @@
 		EE28A33D1C5DAD70007550E2 /* UIScrollView+MJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJRefresh.m"; sourceTree = "<group>"; };
 		EE28A33E1C5DAD70007550E2 /* UIView+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MJExtension.h"; sourceTree = "<group>"; };
 		EE28A33F1C5DAD70007550E2 /* UIView+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MJExtension.m"; sourceTree = "<group>"; };
+		EE298DD41C67708C007AF1C8 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		EE298DD51C67708C007AF1C8 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		EE298DD61C67708C007AF1C8 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		EE298DD71C67708C007AF1C8 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		EE298DD81C67708C007AF1C8 /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
+		EE298DD91C67708C007AF1C8 /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
+		EE298DDA1C67708C007AF1C8 /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
+		EE298DDB1C67708C007AF1C8 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
+		EE298DDC1C67708C007AF1C8 /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDB.h; sourceTree = "<group>"; };
+		EE298DDD1C67708C007AF1C8 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		EE298DDE1C67708C007AF1C8 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		EE298DF21C6781DA007AF1C8 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		EE29DEC11C5CE4D10024023C /* YUComposeToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YUComposeToolbar.swift; sourceTree = "<group>"; };
 		EE29DEC31C5CEEB50024023C /* YUComposePhotosView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YUComposePhotosView.swift; sourceTree = "<group>"; };
 		EE29EEA01C4B643200CA667F /* Yu3Weibo-Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Yu3Weibo-Swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -361,6 +379,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE298DF31C6781DA007AF1C8 /* libsqlite3.tbd in Frameworks */,
 				EEE780801C4F7BA900C4D905 /* Kingfisher.framework in Frameworks */,
 				EE6056881C4E6CF60089A04C /* Alamofire.framework in Frameworks */,
 			);
@@ -461,6 +480,7 @@
 			isa = PBXGroup;
 			children = (
 				EE26EF951C5B43060063C6A6 /* YueWeibo-Swift-Bridging-Header.h */,
+				EE298DD31C67708C007AF1C8 /* fmdb */,
 				EE28A3131C5DAD70007550E2 /* MJRefresh */,
 				EE26EFB01C5B516B0063C6A6 /* SDWebImage */,
 				EE26EF961C5B46890063C6A6 /* MJPhotoBrowser */,
@@ -562,6 +582,24 @@
 			path = Header;
 			sourceTree = "<group>";
 		};
+		EE298DD31C67708C007AF1C8 /* fmdb */ = {
+			isa = PBXGroup;
+			children = (
+				EE298DD41C67708C007AF1C8 /* FMDatabase.h */,
+				EE298DD51C67708C007AF1C8 /* FMDatabase.m */,
+				EE298DD61C67708C007AF1C8 /* FMDatabaseAdditions.h */,
+				EE298DD71C67708C007AF1C8 /* FMDatabaseAdditions.m */,
+				EE298DD81C67708C007AF1C8 /* FMDatabasePool.h */,
+				EE298DD91C67708C007AF1C8 /* FMDatabasePool.m */,
+				EE298DDA1C67708C007AF1C8 /* FMDatabaseQueue.h */,
+				EE298DDB1C67708C007AF1C8 /* FMDatabaseQueue.m */,
+				EE298DDC1C67708C007AF1C8 /* FMDB.h */,
+				EE298DDD1C67708C007AF1C8 /* FMResultSet.h */,
+				EE298DDE1C67708C007AF1C8 /* FMResultSet.m */,
+			);
+			path = fmdb;
+			sourceTree = "<group>";
+		};
 		EE29DEB31C5CE2520024023C /* Base */ = {
 			isa = PBXGroup;
 			children = (
@@ -598,6 +636,7 @@
 		EE29EE971C4B643200CA667F = {
 			isa = PBXGroup;
 			children = (
+				EE298DF21C6781DA007AF1C8 /* libsqlite3.tbd */,
 				EE29EEA21C4B643200CA667F /* Yu3Weibo-Swift */,
 				EE29EEB71C4B643200CA667F /* Yu3Weibo-SwiftTests */,
 				EE29EEC21C4B643200CA667F /* Yu3Weibo-SwiftUITests */,
@@ -999,10 +1038,13 @@
 				EE19E5BC1C507C0D00A40B2E /* FrameModel.swift in Sources */,
 				EE26EFD41C5B516B0063C6A6 /* SDImageCache.m in Sources */,
 				EE26EFD21C5B516B0063C6A6 /* MKAnnotationView+WebCache.m in Sources */,
+				EE298DE31C67708C007AF1C8 /* FMDatabaseQueue.m in Sources */,
 				EE26EFD81C5B516B0063C6A6 /* SDWebImageDownloaderOperation.m in Sources */,
 				EE28A3401C5DAD70007550E2 /* MJRefreshAutoFooter.m in Sources */,
+				EE298DE11C67708C007AF1C8 /* FMDatabaseAdditions.m in Sources */,
 				EE28A3471C5DAD70007550E2 /* MJRefreshAutoStateFooter.m in Sources */,
 				EE6056E01C4E7D500089A04C /* HttpTool.swift in Sources */,
+				EE298DE01C67708C007AF1C8 /* FMDatabase.m in Sources */,
 				EE29EEA41C4B643200CA667F /* AppDelegate.swift in Sources */,
 				EE26EFDB1C5B516B0063C6A6 /* UIButton+WebCache.m in Sources */,
 				EE28A3441C5DAD70007550E2 /* MJRefreshHeader.m in Sources */,
@@ -1023,6 +1065,7 @@
 				EE26EFDD1C5B516B0063C6A6 /* UIImage+MultiFormat.m in Sources */,
 				EE28A34B1C5DAD70007550E2 /* MJRefreshGifHeader.m in Sources */,
 				EE26EFD51C5B516B0063C6A6 /* SDWebImageCompat.m in Sources */,
+				EE298DE41C67708C007AF1C8 /* FMResultSet.m in Sources */,
 				EE28A34D1C5DAD70007550E2 /* MJRefreshStateHeader.m in Sources */,
 				EE35A1EA1C4D076300B721BA /* YUTitleButton.swift in Sources */,
 				EE28A34F1C5DAD70007550E2 /* MJRefreshConst.m in Sources */,
@@ -1035,6 +1078,7 @@
 				EE1FA7DD1C4D1660009B7C30 /* YUNewFeatureController.swift in Sources */,
 				EE2AAA6C1C54773C00EEE796 /* YUPhotoListView.swift in Sources */,
 				EE28A34A1C5DAD70007550E2 /* MJRefreshBackStateFooter.m in Sources */,
+				EE298DE21C67708C007AF1C8 /* FMDatabasePool.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

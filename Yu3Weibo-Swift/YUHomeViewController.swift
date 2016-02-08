@@ -38,11 +38,13 @@ class YUHomeViewController: UITableViewController {
         param.uid = Int(YUAccountTool.account()!.uid as! String)!
         YUUserInfoTool.userInfoWithParam(param) { (user, error) -> Void in
             if error == nil {
-                self.titleButton.setTitle(user!.name!, forState: .Normal)
-                // 保存昵称
-                let account = YUAccountTool.account()
-                account!.name = user!.name;
-                YUAccountTool.saveAccount(account!)
+                if user?.name != nil {
+                    self.titleButton.setTitle(user!.name!, forState: .Normal)
+                    // 保存昵称
+                    let account = YUAccountTool.account()
+                    account!.name = user!.name;
+                    YUAccountTool.saveAccount(account!)
+                }
             } else {
                 print("请求失败：\(error)")
                 MBProgressHUD.showError("获取用户信息失败")
@@ -56,7 +58,7 @@ class YUHomeViewController: UITableViewController {
         self.tabBarItem.badgeValue = nil
         // 装配参数
         let param = HomeStatusesParam()
-        param.count = 10
+        param.count = 20
         if self.statusFrames.count > 0 {
             let statusFrame = self.statusFrames[0]
             param.since_id = Int(statusFrame.status!.idstr!)!

@@ -41,7 +41,7 @@ class YUTabBarViewController: UITabBarController, YUTabBarDelegate {
         self.setupTabBar()
         self.setupAllChildViewControllers()
         // 定时检查未读数
-        let timer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: Selector("checkUnreadCount"), userInfo: nil, repeats: true)
+        let timer = NSTimer.scheduledTimerWithTimeInterval(20, target: self, selector: Selector("checkUnreadCount"), userInfo: nil, repeats: true)
         NSRunLoop.mainRunLoop().addTimer(timer, forMode: NSRunLoopCommonModes)
     }
     
@@ -50,10 +50,19 @@ class YUTabBarViewController: UITabBarController, YUTabBarDelegate {
         param.uid = Int(YUAccountTool.account()!.uid as! String)!
         YUUserInfoTool.userUnreadCountWithParam(param) { (result, error) -> Void in
             if error == nil {
-                self.home.tabBarItem.badgeValue = "\(result!.status!)"
-                self.message.tabBarItem.badgeValue = "\(result!.messageCount())"
+                let homeBadgeValue = result?.status
+                if homeBadgeValue != nil {
+                    self.home.tabBarItem.badgeValue = String(homeBadgeValue!)
+                }
+                let messageBadgeValue = result?.messageCount()
+                if messageBadgeValue != nil {
+                    self.message.tabBarItem.badgeValue = String(messageBadgeValue!)
+                }
                 // 3.3.我
-                self.me.tabBarItem.badgeValue = "\(result!.follower!)"
+                let meBadgeValue = result?.follower
+                if meBadgeValue != nil {
+                    self.me.tabBarItem.badgeValue = String(meBadgeValue!)
+                }
                 // 3.4.设置应用图标右上角的数字
                 let version = Float(UIDevice.currentDevice().systemVersion)
                 if version >= 8.0 {

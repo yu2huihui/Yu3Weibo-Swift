@@ -37,7 +37,7 @@ class UserUnreadCountParam: BaseParam {
     /**
     *  未读数版本。0：原版未读数，1：新版未读数。默认为0。
     */
-    var unread_message:Int = 1
+    var unread_message:Int = 0
 }
 
 class UserUnreadCountResult {
@@ -97,6 +97,7 @@ struct YUUserInfoTool {
     static func userUnreadCountWithParam(param:UserUnreadCountParam, completionHandler: (UserUnreadCountResult?, NSError?) -> Void) {
         var params = ["access_token": param.access_token] as Dictionary<String,AnyObject>
         params["uid"] = param.uid
+        //3061354750
         params["unread_message"] = param.unread_message
         YUHttpTool.getWithURL("https://rm.api.weibo.com/2/remind/unread_count.json", params: params) { (response) -> Void in
             if response.result.error == nil {
@@ -193,26 +194,101 @@ struct YUStatusTool {
     
     /** 获取首页微博信息 */
     static func homeStatusesWithParam(param: HomeStatusesParam, completionHandler: ([YUStatus]?, NSError?) -> Void) {
-        var params = ["access_token": param.access_token] as Dictionary<String,AnyObject>
-        params["count"] = param.count
-        params["since_id"] = param.since_id
-        params["max_id"] = param.max_id
+        var statuses = [YUStatus]()
+        // 1.先从缓存里面加载
+        let dictArray = StatusCacheTool.statusesWithParam(param)
+        if (dictArray.count != 0) { // 有缓存
+            for dic in dictArray {
+                let status = YUStatus(dic: dic)
+                statuses.append(status)
+            }
+            completionHandler(statuses, nil)
+        } else {
+            var params = ["access_token": param.access_token] as Dictionary<String,AnyObject>
+            params["count"] = param.count
+            params["since_id"] = param.since_id
+            params["max_id"] = param.max_id
         
-        YUHttpTool.getWithURL("https://api.weibo.com/2/statuses/home_timeline.json", params: params) { (response) -> Void in
-            if response.result.error != nil {
-                completionHandler(nil, response.result.error)
-            } else {
-                let status = response.result.value as? NSDictionary
-                let statusAry = status!["statuses"] as? NSArray
-                var statuses = [YUStatus]()
-                for statusDic in statusAry! {
-                    //将字典封装成模型
-                    let status = YUStatus(dic: statusDic as! NSDictionary)
-                    statuses.append(status)
+            YUHttpTool.getWithURL("https://api.weibo.com/2/statuses/home_timeline.json", params: params) { (response) -> Void in
+                if response.result.error != nil {
+                    completionHandler(nil, response.result.error)
+                } else {
+                    let status = response.result.value as? NSDictionary
+                    let statusAry = status!["statuses"] as? NSArray
+                    if statusAry != nil {
+                        // 缓存数据
+                        StatusCacheTool.addStatuses(statusAry!)
+                        for statusDic in statusAry! {
+                            //将字典封装成模型
+                            let status = YUStatus(dic: statusDic as! NSDictionary)
+                            statuses.append(status)
+                        }
+                    }
+                    completionHandler(statuses, nil)
                 }
-                completionHandler(statuses, nil)
             }
         }
+    }
+}
+
+class StatusCacheTool: NSObject {
+    static var queue:FMDatabaseQueue?
+    override class func initialize() {
+        // 0.获得沙盒中的数据库文件名
+        let pathStr = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).last! as NSString
+        let path = pathStr.stringByAppendingPathComponent("statuses.sqlite")
+        
+        // 1.创建队列
+        queue = FMDatabaseQueue(path: path)
+        
+        // 2.创表
+        queue?.inDatabase({ (db) -> Void in
+            db.executeUpdate("create table if not exists t_status (id integer primary key autoincrement, access_token text, idstr text, dict blob);", withArgumentsInArray: nil)
+        })
+    }
+    
+    class func addStatuses(dicAry:NSArray) {
+        for dic in dicAry {
+            self.addStatus(dic as! NSDictionary)
+        }
+    }
+    
+    class func addStatus(dic:NSDictionary) {
+        queue?.inDatabase({ (db) -> Void in
+            // 1.获得需要存储的数据
+            let accessToken = YUAccountTool.account()?.access_token!
+            
+            let idstr = dic["idstr"] as! NSString
+            let data = NSKeyedArchiver.archivedDataWithRootObject(dic)
+            
+            // 2.存储数据
+            db.executeUpdate("insert into t_status (access_token, idstr, dict) values(?, ?, ?)", withArgumentsInArray: [accessToken!, idstr, data])
+        })
+    }
+    
+    class func statusesWithParam(param:HomeStatusesParam) -> [NSDictionary] {
+        // 创建数组
+        var dictArray = [NSDictionary]()
+
+        queue?.inDatabase({ (db) -> Void in
+            let accessToken = YUAccountTool.account()?.access_token
+            
+            var rs:FMResultSet? = nil
+            if (param.since_id != 0) { // 如果有since_id
+                rs = db.executeQuery("select * from t_status where access_token = ? and idstr > ? order by idstr desc limit 0,?;", withArgumentsInArray: [accessToken!, param.since_id as NSNumber, param.count as NSNumber])
+            } else if (param.max_id != 0) { // 如果有max_id
+                rs = db.executeQuery("select * from t_status where access_token = ? and idstr <= ? order by idstr desc limit 0,?;", withArgumentsInArray: [accessToken!, param.max_id as NSNumber, param.count as NSNumber])
+            } else { // 如果没有since_id和max_id
+                rs = db.executeQuery("select * from t_status where access_token = ? order by idstr desc limit 0,?;", withArgumentsInArray: [accessToken!, param.count as NSNumber])
+            }
+            
+            while (rs?.next() == true) {
+                let data = rs!.dataForColumn("dict")
+                let dict = NSKeyedUnarchiver.unarchiveObjectWithData(data) as! NSDictionary
+                dictArray.append(dict)
+            }
+        })
+        return dictArray
     }
 }
 
@@ -257,6 +333,19 @@ struct YUAccountTool {
             }
         } else {
             return nil
+        }
+    }
+    
+    static func accessTokenWithParams(params: [String:String], completion:(YUAccount?, NSError?) -> Void) {
+        YUHttpTool.postWithURL("https://api.weibo.com/oauth2/access_token", params: params) { (response) -> Void in
+            if response.result.error != nil {
+                completion(nil, response.result.error)
+            } else {
+                // 字典转模型
+                let dict = response.result.value as! Dictionary<String, AnyObject>
+                let account = YUAccount(dic: dict)
+                completion(account, nil)
+            }
         }
     }
 }
