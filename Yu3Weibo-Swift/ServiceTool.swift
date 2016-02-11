@@ -235,7 +235,7 @@ class StatusCacheTool: NSObject {
     static var queue:FMDatabaseQueue?
     override class func initialize() {
         // 0.获得沙盒中的数据库文件名
-        let pathStr = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).last! as NSString
+        let pathStr = NSSearchPathForDirectoriesInDomains(.CachesDirectory, .UserDomainMask, true).last! as NSString
         let path = pathStr.stringByAppendingPathComponent("statuses.sqlite")
         
         // 1.创建队列

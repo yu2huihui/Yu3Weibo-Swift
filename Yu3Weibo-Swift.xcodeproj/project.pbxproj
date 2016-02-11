@@ -9,9 +9,14 @@
 /* Begin PBXBuildFile section */
 		EE19E5BC1C507C0D00A40B2E /* FrameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE19E5BB1C507C0D00A40B2E /* FrameModel.swift */; };
 		EE19E5C01C50B2B000A40B2E /* YUStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE19E5BF1C50B2B000A40B2E /* YUStatusCell.swift */; };
+		EE1D187E1C6C28820067EDED /* YUSystemSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1D187D1C6C28820067EDED /* YUSystemSettingViewController.swift */; };
+		EE1D188A1C6C34300067EDED /* YUGeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1D18891C6C34300067EDED /* YUGeneralViewController.swift */; };
 		EE1FA7DD1C4D1660009B7C30 /* YUNewFeatureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1FA7DC1C4D1660009B7C30 /* YUNewFeatureController.swift */; };
 		EE22002C1C5201780021FFE1 /* YUStatusToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE22002B1C5201780021FFE1 /* YUStatusToolbar.swift */; };
 		EE2200381C5257950021FFE1 /* YUStatusTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2200371C5257950021FFE1 /* YUStatusTopView.swift */; };
+		EE25BA3B1C6AEF3B00A73C13 /* MeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE25BA3A1C6AEF3B00A73C13 /* MeModel.swift */; };
+		EE25BA3D1C6B007900A73C13 /* YUSettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE25BA3C1C6B007900A73C13 /* YUSettingCell.swift */; };
+		EE25BA401C6B071D00A73C13 /* YUSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE25BA3F1C6B071D00A73C13 /* YUSettingViewController.swift */; };
 		EE26EF711C5B2B0F0063C6A6 /* YUTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE26EF701C5B2B0F0063C6A6 /* YUTextView.swift */; };
 		EE26EF7E1C5B33060063C6A6 /* YUComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE26EF7D1C5B33060063C6A6 /* YUComposeViewController.swift */; };
 		EE26EF851C5B41CE0063C6A6 /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = EE26EF811C5B41CE0063C6A6 /* MBProgressHUD+MJ.m */; };
@@ -230,9 +235,14 @@
 /* Begin PBXFileReference section */
 		EE19E5BB1C507C0D00A40B2E /* FrameModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrameModel.swift; sourceTree = "<group>"; };
 		EE19E5BF1C50B2B000A40B2E /* YUStatusCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YUStatusCell.swift; sourceTree = "<group>"; };
+		EE1D187D1C6C28820067EDED /* YUSystemSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YUSystemSettingViewController.swift; sourceTree = "<group>"; };
+		EE1D18891C6C34300067EDED /* YUGeneralViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YUGeneralViewController.swift; sourceTree = "<group>"; };
 		EE1FA7DC1C4D1660009B7C30 /* YUNewFeatureController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YUNewFeatureController.swift; sourceTree = "<group>"; };
 		EE22002B1C5201780021FFE1 /* YUStatusToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YUStatusToolbar.swift; sourceTree = "<group>"; };
 		EE2200371C5257950021FFE1 /* YUStatusTopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YUStatusTopView.swift; sourceTree = "<group>"; };
+		EE25BA3A1C6AEF3B00A73C13 /* MeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeModel.swift; sourceTree = "<group>"; };
+		EE25BA3C1C6B007900A73C13 /* YUSettingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YUSettingCell.swift; sourceTree = "<group>"; };
+		EE25BA3F1C6B071D00A73C13 /* YUSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YUSettingViewController.swift; sourceTree = "<group>"; };
 		EE26EF701C5B2B0F0063C6A6 /* YUTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YUTextView.swift; sourceTree = "<group>"; };
 		EE26EF7D1C5B33060063C6A6 /* YUComposeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YUComposeViewController.swift; sourceTree = "<group>"; };
 		EE26EF801C5B41CE0063C6A6 /* MBProgressHUD+MJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+MJ.h"; sourceTree = "<group>"; };
@@ -402,6 +412,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EE25BA2F1C6AEF0A00A73C13 /* Me */ = {
+			isa = PBXGroup;
+			children = (
+				EE25BA3C1C6B007900A73C13 /* YUSettingCell.swift */,
+			);
+			name = Me;
+			sourceTree = "<group>";
+		};
+		EE25BA3E1C6B06F600A73C13 /* Me */ = {
+			isa = PBXGroup;
+			children = (
+				EE29EEEC1C4B825A00CA667F /* YUMeViewController.swift */,
+				EE25BA3F1C6B071D00A73C13 /* YUSettingViewController.swift */,
+				EE1D187D1C6C28820067EDED /* YUSystemSettingViewController.swift */,
+				EE1D18891C6C34300067EDED /* YUGeneralViewController.swift */,
+			);
+			name = Me;
+			sourceTree = "<group>";
+		};
 		EE26EF7F1C5B41CE0063C6A6 /* MBProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
@@ -712,6 +741,7 @@
 		EE29EED91C4B69B600CA667F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				EE25BA2F1C6AEF0A00A73C13 /* Me */,
 				EE29DEC01C5CE2B50024023C /* Compose */,
 				EE29DEBF1C5CE26D0024023C /* Home */,
 				EE29DEB31C5CE2520024023C /* Base */,
@@ -724,6 +754,7 @@
 			children = (
 				EE6056DD1C4E77020089A04C /* DataModel.swift */,
 				EE19E5BB1C507C0D00A40B2E /* FrameModel.swift */,
+				EE25BA3A1C6AEF3B00A73C13 /* MeModel.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -731,9 +762,9 @@
 		EEE780331C4F5D4500C4D905 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				EE25BA3E1C6B06F600A73C13 /* Me */,
 				EEF0B3511C4E64AA000BD306 /* YUOAuthViewController.swift */,
 				EE1FA7DC1C4D1660009B7C30 /* YUNewFeatureController.swift */,
-				EE29EEEC1C4B825A00CA667F /* YUMeViewController.swift */,
 				EE29EEE81C4B822C00CA667F /* YUDiscoverViewController.swift */,
 				EE29EEE41C4B81E200CA667F /* YUMessageViewController.swift */,
 				EE29EEE01C4B81AF00CA667F /* YUHomeViewController.swift */,
@@ -1016,7 +1047,10 @@
 				EE26EFAA1C5B46890063C6A6 /* MJPhotoProgressView.m in Sources */,
 				EE26EFA91C5B46890063C6A6 /* MJPhotoLoadingView.m in Sources */,
 				EE26EFA81C5B46890063C6A6 /* MJPhotoBrowser.m in Sources */,
+				EE1D188A1C6C34300067EDED /* YUGeneralViewController.swift in Sources */,
 				EE26EF871C5B41CE0063C6A6 /* MBProgressHUD.m in Sources */,
+				EE1D187E1C6C28820067EDED /* YUSystemSettingViewController.swift in Sources */,
+				EE25BA3D1C6B007900A73C13 /* YUSettingCell.swift in Sources */,
 				EE26EFE11C5B516B0063C6A6 /* UIView+WebCacheOperation.m in Sources */,
 				EE26EFAF1C5B48E60063C6A6 /* YUPhotoView.swift in Sources */,
 				EE28A34C1C5DAD70007550E2 /* MJRefreshNormalHeader.m in Sources */,
@@ -1040,6 +1074,7 @@
 				EE26EFD21C5B516B0063C6A6 /* MKAnnotationView+WebCache.m in Sources */,
 				EE298DE31C67708C007AF1C8 /* FMDatabaseQueue.m in Sources */,
 				EE26EFD81C5B516B0063C6A6 /* SDWebImageDownloaderOperation.m in Sources */,
+				EE25BA401C6B071D00A73C13 /* YUSettingViewController.swift in Sources */,
 				EE28A3401C5DAD70007550E2 /* MJRefreshAutoFooter.m in Sources */,
 				EE298DE11C67708C007AF1C8 /* FMDatabaseAdditions.m in Sources */,
 				EE28A3471C5DAD70007550E2 /* MJRefreshAutoStateFooter.m in Sources */,
@@ -1061,6 +1096,7 @@
 				EE28A3461C5DAD70007550E2 /* MJRefreshAutoNormalFooter.m in Sources */,
 				EE26EFAC1C5B46890063C6A6 /* MJPhotoView.m in Sources */,
 				EE26EFDA1C5B516B0063C6A6 /* SDWebImagePrefetcher.m in Sources */,
+				EE25BA3B1C6AEF3B00A73C13 /* MeModel.swift in Sources */,
 				EE375B141C5F49DC00A89429 /* ServiceTool.swift in Sources */,
 				EE26EFDD1C5B516B0063C6A6 /* UIImage+MultiFormat.m in Sources */,
 				EE28A34B1C5DAD70007550E2 /* MJRefreshGifHeader.m in Sources */,

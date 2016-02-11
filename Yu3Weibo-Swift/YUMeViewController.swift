@@ -8,88 +8,49 @@
 
 import UIKit
 
-class YUMeViewController: UITableViewController {
-
+class YUMeViewController: YUSettingViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "设置", style: .Done, target: self, action: Selector("setting"))
+        self.setGroup0()
+        self.setGroup1()
+        self.setGroup2()
+        self.setGroup3()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func setting() {
+        self.navigationController?.pushViewController(YUSystemSettingViewController(), animated: true)
     }
-
-    // MARK: - Table view data source
-
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+    
+    func setGroup0() {
+        let group = self.addGroup()
+        let newFriend = SettingArrowItem(icon: "new_friend", title: "新的好友", destVcClass: nil)
+        newFriend.badgeValue = "6"
+        group.items = [newFriend];
     }
-
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+   
+    func setGroup1() {
+        let group = self.addGroup()
+        let album = SettingArrowItem(icon: "album", title: "我的相册", destVcClass: nil)
+        let collect = SettingArrowItem(icon: "collect", title: "我的点评", destVcClass: nil)
+        let like = SettingArrowItem(icon: "like", title: "我的赞", destVcClass: nil)
+        like.badgeValue = "3"
+        group.items = [album, collect, like]
     }
-
-    /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
-
-        return cell
+    
+    func setGroup2() {
+        let group = self.addGroup()
+        let pay = SettingArrowItem(icon: "pay", title: "微博支付", destVcClass: nil)
+        let vip = SettingArrowItem(icon: "vip", title: "会员中心", destVcClass: nil)
+        group.items = [pay, vip]
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    func setGroup3() {
+        let group = self.addGroup()
+        let card = SettingArrowItem(icon: "card", title: "我的名片", destVcClass: nil)
+        let draft = SettingArrowItem(icon: "draft", title: "草稿箱", destVcClass: nil)
+        group.items = [card, draft]
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
