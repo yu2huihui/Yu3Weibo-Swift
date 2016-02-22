@@ -7,19 +7,27 @@
 //
 
 import Foundation
+import ObjectMapper
 
-class YUPhoto : NSObject {
+class YUPhoto : Mappable {
     /** 微博的单张配图 */
     var thumbnail_pic:String?
     
     init(photo:String) {
-        super.init()
         thumbnail_pic = photo
+    }
+    
+    required init?(_ map: Map){
+        
+    }
+    
+    func mapping(map: Map) {
+        thumbnail_pic <- map["thumbnail_pic"]
     }
 }
 
-/** 微博模型 */
-class YUStatus: NSObject {
+//MARK: 微博模型
+class YUStatus: Mappable {
     /** 微博的内容(文字) */
     var text:String?
     /** 微博的时间原始数据"EEE MMM dd HH:mm:ss Z yyyy" */
@@ -91,7 +99,6 @@ class YUStatus: NSObject {
     var retweeted_status:YUStatus?
     
     init(dic:NSDictionary) {
-        super.init()
         self.text = dic["text"] as? String
         self._created_at = dic["created_at"] as? String
         self._source = dic["source"] as? String
@@ -117,9 +124,26 @@ class YUStatus: NSObject {
         }
         self.pic_urls = urls
     }
+    
+    required init?(_ map: Map){
+        
+    }
+    
+    func mapping(map: Map) {
+        text <- map["text"]
+        _created_at <- map["created_at"]
+        _source <- map["source"]
+        idstr <- map["idstr"]
+        pic_urls <- map["pic_urls"]
+        reposts_count <- map["reposts_count"]
+        comments_count <- map["comments_count"]
+        attitudes_count <- map["attitudes_count"]
+        user <- map["user"]
+        retweeted_status <- map["retweeted_status"]
+    }
 }
-/** 用户模型 */
-class YUUser: NSObject {
+// MARK: 用户模型
+class YUUser: Mappable {
     /** 用户的ID */
     var idstr:String?
     /** 用户的昵称 */
@@ -130,16 +154,30 @@ class YUUser: NSObject {
     var mbrank:Int?
     /** 会员类型 */
     var mbtype:Int?
+    
     init(dic:NSDictionary) {
-        super.init()
         self.idstr = dic["idstr"] as? String
         self.name = dic["name"] as? String
         self.profile_image_url = dic["profile_image_url"] as? String
         self.mbrank = dic["mbrank"] as? Int
         self.mbtype = dic["mbtype"] as? Int
     }
+    
+    required init?(_ map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        idstr <- map["idstr"]
+        name <- map["name"]
+        profile_image_url <- map["profile_image_url"]
+        mbrank <- map["mbrank"]
+        mbtype <- map["mbtype"]
+    }
 }
 
+
+// MARK: 账号模型
 class YUAccount: NSObject, NSCoding {
     var access_token:NSString?
     var expires_in:NSNumber?

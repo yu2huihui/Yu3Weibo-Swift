@@ -8,9 +8,12 @@
 
 import UIKit
 
-// 账号相关
-let AppKey = "1421524559"
-let AppSecret = "997bdcb2d1eafc1c9890f64acdd9844d"
+// 微博测试账号  x_sun_yu@163.com
+// 密码           54liuyu
+
+// 账号相关常量
+let AppKey = "1012691793"
+let AppSecret = "ea6ff05479ecf03cf972c9f3e0ead92c"
 let RedirectURI = "http://www.cnblogs.com/yu3-/"
 let LoginURLStr = "https://api.weibo.com/oauth2/authorize?client_id=\(AppKey)&response_type=code&redirect_uri=\(RedirectURI)"
 

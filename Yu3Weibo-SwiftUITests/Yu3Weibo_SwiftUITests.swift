@@ -29,8 +29,13 @@ class Yu3Weibo_SwiftUITests: XCTestCase {
     }
     
     func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        let app = XCUIApplication()
+        
+        let tabBarsQuery = app.tabBars
+        tabBarsQuery.buttons["tabbar compose icon add os7"].tap()
+        
+        app.navigationBars["发微博"].buttons["取消"].tap()
+        
     }
     
 }

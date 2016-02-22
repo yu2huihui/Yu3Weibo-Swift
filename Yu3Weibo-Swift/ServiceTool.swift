@@ -101,9 +101,10 @@ struct YUUserInfoTool {
         params["unread_message"] = param.unread_message
         YUHttpTool.getWithURL("https://rm.api.weibo.com/2/remind/unread_count.json", params: params) { (response) -> Void in
             if response.result.error == nil {
-                let dic = response.result.value as! NSDictionary
-                let result = UserUnreadCountResult(dic: dic)
-                completionHandler(result, nil)
+                if let dic = response.result.value as? NSDictionary {
+                    let result = UserUnreadCountResult(dic: dic)
+                    completionHandler(result, nil)
+                }
             } else {
                 completionHandler(nil, response.result.error)
             }
@@ -121,9 +122,10 @@ struct YUUserInfoTool {
             if response.result.error != nil {
                 completionHandler(nil, response.result.error)
             } else {
-                let userDic = response.result.value as! NSDictionary
-                let user = YUUser(dic: userDic)
-                completionHandler(user, nil)
+                if let userDic = response.result.value as? NSDictionary {
+                    let user = YUUser(dic: userDic)
+                    completionHandler(user, nil)
+                }
             }
         }
     }
@@ -154,7 +156,7 @@ class SendStatusParam: BaseParam {
 }
 
 struct YUStatusTool {
-    /** 发送一条微博 */
+    // MARK: 发送一条微博
     static func sendStatusWithParam(param: SendStatusParam, completionHandler: (YUStatus?, NSError?) -> Void) {
         var params = ["access_token": param.access_token] as Dictionary<String,String>
         params["status"] = param.status
@@ -169,30 +171,18 @@ struct YUStatusTool {
                 formDataArray.append(formData)
             }
             // 发送请求并上传图片
-            YUHttpTool.uploadWithPOST("https://upload.api.weibo.com/2/statuses/upload.json", params: params, formDataArray: formDataArray) { (response) -> Void in
-                if response.result.error != nil {
-                    completionHandler(nil, response.result.error)
-                } else {
-                    let statusDic = response.result.value as! NSDictionary
-                    let status = YUStatus(dic: statusDic)
-                    completionHandler(status, nil)
-                }
-            }
+            YUHttpTool.postImageStatusWithURL("https://upload.api.weibo.com/2/statuses/upload.json", params: params, formDataArray: formDataArray, completionHandler: { (status, error) -> Void in
+                completionHandler(status, error)
+            })
         } else {
             // 发送请求
-            YUHttpTool.postWithURL("https://api.weibo.com/2/statuses/update.json", params: params, completionHandler: { (response) -> Void in
-                if response.result.error != nil {
-                    completionHandler(nil, response.result.error)
-                } else {
-                    let statusDic = response.result.value as! NSDictionary
-                    let status = YUStatus(dic: statusDic)
-                    completionHandler(status, nil)
-                }
+            YUHttpTool.postStatusWithURL("https://api.weibo.com/2/statuses/update.json", params: params, completionHandler: { (response) -> Void in
+                completionHandler(response.result.value, response.result.error)
             })
         }
     }
     
-    /** 获取首页微博信息 */
+    // MARK: 获取首页微博信息
     static func homeStatusesWithParam(param: HomeStatusesParam, completionHandler: ([YUStatus]?, NSError?) -> Void) {
         var statuses = [YUStatus]()
         // 1.先从缓存里面加载
@@ -209,28 +199,14 @@ struct YUStatusTool {
             params["since_id"] = param.since_id
             params["max_id"] = param.max_id
         
-            YUHttpTool.getWithURL("https://api.weibo.com/2/statuses/home_timeline.json", params: params) { (response) -> Void in
-                if response.result.error != nil {
-                    completionHandler(nil, response.result.error)
-                } else {
-                    let status = response.result.value as? NSDictionary
-                    let statusAry = status!["statuses"] as? NSArray
-                    if statusAry != nil {
-                        // 缓存数据
-                        StatusCacheTool.addStatuses(statusAry!)
-                        for statusDic in statusAry! {
-                            //将字典封装成模型
-                            let status = YUStatus(dic: statusDic as! NSDictionary)
-                            statuses.append(status)
-                        }
-                    }
-                    completionHandler(statuses, nil)
-                }
-            }
+            YUHttpTool.getStatusesWithURL("https://api.weibo.com/2/statuses/home_timeline.json", params: params, completionHandler: { (response) -> Void in
+                completionHandler(response.result.value, response.result.error)
+            })
         }
     }
 }
 
+// MARK: 缓存工具
 class StatusCacheTool: NSObject {
     static var queue:FMDatabaseQueue?
     override class func initialize() {
@@ -249,7 +225,12 @@ class StatusCacheTool: NSObject {
     
     class func addStatuses(dicAry:NSArray) {
         for dic in dicAry {
-            self.addStatus(dic as! NSDictionary)
+            if let dict = dic as? NSDictionary {
+                self.addStatus(dict)
+            } else {
+                print("addStatuses方法参数中转换数组中元素转换为NSDictionary失败")
+                return
+            }
         }
     }
     
@@ -257,7 +238,6 @@ class StatusCacheTool: NSObject {
         queue?.inDatabase({ (db) -> Void in
             // 1.获得需要存储的数据
             let accessToken = YUAccountTool.account()?.access_token!
-            
             let idstr = dic["idstr"] as! NSString
             let data = NSKeyedArchiver.archivedDataWithRootObject(dic)
             
@@ -292,6 +272,7 @@ class StatusCacheTool: NSObject {
     }
 }
 
+// MARK: 选择控制器的工具
 struct YUWeiboTool {
     static func chooseRootController() {
         let application = UIApplication.sharedApplication()
@@ -312,6 +293,7 @@ struct YUWeiboTool {
     }
 }
 
+// MARK: 存取账号的工具
 struct YUAccountTool {
     static let accountFile = (NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).last! as NSString).stringByAppendingPathComponent("account.data")
     
